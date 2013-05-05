@@ -9,10 +9,13 @@ Step 1 (1.5 h)
 * XML solution，（找到库，应用到Java project中，调用函数处理，建立）
 * HTTP solution (找到确定的库，应用到Java Project中，调用函数处理)
 * XML不同关联关系，数据获取实验（实验数据可能用到的关系，并通过HTTP获取实验）
-  * 单个single (get,put,post)
+  * 单个single (get,put,post) ---ok
   * 一对多 （通过get与post建立，修改）
   * 一对一 （通过get与post建立，修改）
   * 多对多 （通过get与post建立，修改）
+  * 删除 ok
+  ! 注意：composite表可以使用?col=筛选，而association与single不可以
+  ! 可以用*, 主id，以及1@2形式获取；
 
 
 Step 2 (2h)
