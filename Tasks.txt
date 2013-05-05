@@ -1,0 +1,26 @@
+2013年5月5日 信息系统任务：
+
+Step 1 (1.5 h)
+
+* Use-case 图，与Use-case specificiation （杜）
+要求：PowerDesign；
+要求：UML模板文档；
+* Java UI solution（配置并实验，拖窗口，窗口属性设置，按钮事件调用）
+* XML solution，（找到库，应用到Java project中，调用函数处理，建立）
+* HTTP solution (找到确定的库，应用到Java Project中，调用函数处理)
+* XML不同关联关系，数据获取实验（实验数据可能用到的关系，并通过HTTP获取实验）
+  * 单个single (get,put,post)
+  * 一对多 （通过get与post建立，修改）
+  * 一对一 （通过get与post建立，修改）
+  * 多对多 （通过get与post建立，修改）
+
+
+Step 2 (2h)
+
+* database design （XML对象形式）
+* UI design （每个界面都有图，MockupsForDesktop）
+  * 支持最大化
+  * 
+* Client design (关键类库：HTTP 通信类（包装） XML包装类，界面响应)
+
+Step 3
