@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Resource isMaster="false" isAssociation="false" isComposite="true">
+  <DBConfig>
+    <DBURL>localhost/PaperManagement/PaperVersion</DBURL>
+    <UserName>root</UserName>
+    <Password>password</Password>
+    <Driver>com.mysql.jdbc.Driver</Driver>
+  </DBConfig>
+  <URI>PaperManagement/PaperVersion/{Key}</URI>
+  <Name>PaperVersion</Name>
+  <Description>复合资源 论文版本</Description>
+  <PrimaryKey/>
+  <Super/>
+  <Conditions/>
+  <OwnerPath></OwnerPath>
+  <Attributes>
+    <Resource>
+      <URI>PaperManagement/paperHasRefer/{Key}</URI>
+      <ResourceRelation>Composite</ResourceRelation>
+      <Super></Super>
+    </Resource>
+    <Column>
+      <ColumnName>description</ColumnName>
+      <AttributeName>description</AttributeName>
+      <NotNull>yes</NotNull>
+      <Super/>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <ColumnName>body</ColumnName>
+      <AttributeName>body</AttributeName>
+      <NotNull>yes</NotNull>
+      <Super/>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <ColumnName>postDate</ColumnName>
+      <AttributeName>postDate</AttributeName>
+      <NotNull>yes</NotNull>
+      <Super/>
+      <Type>Date</Type>
+    </Column>
+  </Attributes>
+</Resource>

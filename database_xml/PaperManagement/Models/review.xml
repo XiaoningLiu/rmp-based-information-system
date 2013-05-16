@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Resource isMaster="false" isAssociation="true" isComposite="false">
+  <DBConfig>
+    <DBURL>localhost/PaperManagement/review</DBURL>
+    <UserName>root</UserName>
+    <Password>password</Password>
+    <Driver>com.mysql.jdbc.Driver</Driver>
+  </DBConfig>
+  <URI>PaperManagement/review/{Key}</URI>
+  <Name>review</Name>
+  <Description>关联资源 审查</Description>
+  <PrimaryKey/>
+  <Super/>
+  <Conditions/>
+  <OwnerPath></OwnerPath>
+  <Attributes>
+    <Column>
+      <ColumnName>advice</ColumnName>
+      <AttributeName>advice</AttributeName>
+      <NotNull>yes</NotNull>
+      <Super/>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <ColumnName>getTime</ColumnName>
+      <AttributeName>getTime</AttributeName>
+      <NotNull>yes</NotNull>
+      <Super/>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <ColumnName>isFinish</ColumnName>
+      <AttributeName>isFinish</AttributeName>
+      <NotNull>yes</NotNull>
+      <Super/>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <ColumnName>reviewCounter</ColumnName>
+      <AttributeName>reviewCounter</AttributeName>
+      <NotNull>yes</NotNull>
+      <Super/>
+      <Type>String</Type>
+    </Column>
+    <Column>
+      <ColumnName>finishTime</ColumnName>
+      <AttributeName>finishTime</AttributeName>
+      <NotNull>yes</NotNull>
+      <Super/>
+      <Type>String</Type>
+    </Column>
+  </Attributes>
+  <InverseJoin/>
+  <Join>
+    <Resource>
+      <URI>PaperManagement/Paper/{Key}</URI>
+      <ResourceRelation>RelatedTo</ResourceRelation>
+      <Super/>
+    </Resource>
+  </Join>
+</Resource>
