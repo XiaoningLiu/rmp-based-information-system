@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Resource isMaster="false" isAssociation="true" isComposite="false"> 
+  <DBConfig> 
+    <DBURL>localhost/PaperManagement/paperHasRefer</DBURL>  
+    <UserName>root</UserName>  
+    <Password>password</Password>  
+    <Driver>com.mysql.jdbc.Driver</Driver> 
+  </DBConfig>  
+  <URI>PaperManagement/paperHasRefer/{Key}</URI>  
+  <Name>paperHasRefer</Name>  
+  <Description>关联资源 版本关联引用</Description>  
+  <PrimaryKey/>  
+  <Super/>  
+  <Conditions/>  
+  <OwnerPath></OwnerPath>  
+  <Attributes/>  
+  <InverseJoin/>  
+  <Join> 
+    <Resource> 
+      <URI>PaperManagement/reference/{Key}</URI>  
+      <ResourceRelation>RelatedTo</ResourceRelation>  
+      <Super/> 
+    </Resource> 
+  </Join> 
+</Resource>

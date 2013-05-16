@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Resource isMaster="true" isAssociation="false" isComposite="false"> 
+  <DBConfig> 
+    <DBURL>localhost/PaperManagement/reference</DBURL>  
+    <UserName>root</UserName>  
+    <Password>password</Password>  
+    <Driver>com.mysql.jdbc.Driver</Driver> 
+  </DBConfig>  
+  <URI>PaperManagement/reference/{Key}</URI>  
+  <Name>reference</Name>  
+  <Description>独立资源 论文的引用</Description>  
+  <PrimaryKey/>  
+  <Super/>  
+  <Conditions/>  
+  <OwnerPath></OwnerPath>  
+  <Attributes> 
+    <Column> 
+      <ColumnName>refer</ColumnName>  
+      <AttributeName>refer</AttributeName>  
+      <NotNull>yes</NotNull>  
+      <Super/>  
+      <Type>String</Type> 
+    </Column> 
+  </Attributes> 
+</Resource>
