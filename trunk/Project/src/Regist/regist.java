@@ -38,13 +38,13 @@ public class regist extends javax.swing.JFrame {
         address = new javax.swing.JLabel();
         education = new javax.swing.JLabel();
         useridtext = new javax.swing.JTextField();
-        passwordtext = new javax.swing.JTextField();
         emailtext = new javax.swing.JTextField();
         nametext = new javax.swing.JTextField();
         educationtext = new javax.swing.JTextField();
         addresstext = new javax.swing.JTextField();
         regist = new javax.swing.JButton();
         cancel = new javax.swing.JButton();
+        passwordtext = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Regist");
@@ -73,13 +73,6 @@ public class regist extends javax.swing.JFrame {
         useridtext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 useridtextActionPerformed(evt);
-            }
-        });
-
-        passwordtext.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
-        passwordtext.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordtextActionPerformed(evt);
             }
         });
 
@@ -155,32 +148,31 @@ public class regist extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(useridtext, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(passwordtext)
                     .addComponent(emailtext)
                     .addComponent(nametext)
                     .addComponent(addresstext)
-                    .addComponent(educationtext))
-                .addContainerGap(39, Short.MAX_VALUE))
+                    .addComponent(educationtext)
+                    .addComponent(passwordtext))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83)
-                .addComponent(regist, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80))
+                .addContainerGap(96, Short.MAX_VALUE)
+                .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
+                .addComponent(regist, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(userid)
-                            .addComponent(useridtext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(password))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(userid)
+                    .addComponent(useridtext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(password)
                     .addComponent(passwordtext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
+                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(email)
                     .addComponent(emailtext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -209,10 +201,6 @@ public class regist extends javax.swing.JFrame {
     private void useridtextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useridtextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_useridtextActionPerformed
-
-    private void passwordtextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordtextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordtextActionPerformed
 
     private void emailtextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailtextActionPerformed
         // TODO add your handling code here:
@@ -292,7 +280,7 @@ this.setVisible(false);         // TODO add your handling code here:
     private javax.swing.JLabel name;
     private javax.swing.JTextField nametext;
     private javax.swing.JLabel password;
-    private javax.swing.JTextField passwordtext;
+    private javax.swing.JPasswordField passwordtext;
     private javax.swing.JButton regist;
     private javax.swing.JLabel userid;
     private javax.swing.JTextField useridtext;
