@@ -153,9 +153,9 @@ public class Login extends javax.swing.JFrame {
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
        // TODO add your handling code here:
-        boolean flag=true;
+        boolean flag=false;
         Vector columns=new Vector();
-        columns.add("name");
+        columns.add("primarykey");
         columns.add("psd");
         Vector[] vec=infor.jx.getTableRows("User", columns, "*");
         for(int j=0;j<vec[0].size();j++)
