@@ -161,6 +161,11 @@ public class Submit extends javax.swing.JFrame {
                 CancelMouseClicked(evt);
             }
         });
+        Cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelActionPerformed(evt);
+            }
+        });
 
         Submit.setText("Submit");
         Submit.setMaximumSize(new java.awt.Dimension(69, 28));
@@ -168,6 +173,11 @@ public class Submit extends javax.swing.JFrame {
         Submit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 SubmitMouseClicked(evt);
+            }
+        });
+        Submit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubmitActionPerformed(evt);
             }
         });
 
@@ -223,12 +233,20 @@ public class Submit extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField6ActionPerformed
 
     private void CancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelMouseClicked
-    this.setVisible(false);        // TODO add your handling code here:
+            // TODO add your handling code here:
     }//GEN-LAST:event_CancelMouseClicked
 
     private void SubmitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmitMouseClicked
-    this.setVisible(false);      // TODO add your handling code here:
+         // TODO add your handling code here:
     }//GEN-LAST:event_SubmitMouseClicked
+
+    private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
+this.setVisible(false);         // TODO add your handling code here:
+    }//GEN-LAST:event_CancelActionPerformed
+
+    private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
+this.setVisible(false);         // TODO add your handling code here:
+    }//GEN-LAST:event_SubmitActionPerformed
 
     /**
      * @param args the command line arguments

@@ -284,6 +284,11 @@ public class Review_chairman extends javax.swing.JFrame {
                 SaveMouseClicked(evt);
             }
         });
+        Save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveActionPerformed(evt);
+            }
+        });
 
         Pass.setText("Pass");
         Pass.setPreferredSize(new java.awt.Dimension(69, 28));
@@ -362,22 +367,21 @@ public class Review_chairman extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.getAccessibleContext().setAccessibleName("Attribution");
         jPanel1.getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void PassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PassActionPerformed
-        // TODO add your handling code here:
+this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_PassActionPerformed
 
     private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
-        // TODO add your handling code here:
+this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_CancelActionPerformed
 
     private void RefuseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefuseActionPerformed
-        // TODO add your handling code here:
+this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_RefuseActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -413,11 +417,11 @@ public class Review_chairman extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField10ActionPerformed
 
     private void SaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveMouseClicked
-this.setVisible(false);          // TODO add your handling code here:
+         // TODO add your handling code here:
     }//GEN-LAST:event_SaveMouseClicked
 
     private void PassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PassMouseClicked
-this.setVisible(false);          // TODO add your handling code here:
+         // TODO add your handling code here:
     }//GEN-LAST:event_PassMouseClicked
 
     private void RefuseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RefuseMouseEntered
@@ -425,12 +429,16 @@ this.setVisible(false);          // TODO add your handling code here:
     }//GEN-LAST:event_RefuseMouseEntered
 
     private void RefuseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RefuseMouseClicked
-this.setVisible(false);          // TODO add your handling code here:
+         // TODO add your handling code here:
     }//GEN-LAST:event_RefuseMouseClicked
 
     private void CancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelMouseClicked
-this.setVisible(false);          // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_CancelMouseClicked
+
+    private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
+this.setVisible(false);         // TODO add your handling code here:
+    }//GEN-LAST:event_SaveActionPerformed
 
     /**
      * @param args the command line arguments

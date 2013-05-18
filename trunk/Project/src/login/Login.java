@@ -161,7 +161,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_loginActionPerformed
 
     private void registActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registActionPerformed
-        // TODO add your handling code here:
+       new regist().setVisible(true); // TODO add your handling code here:
     }//GEN-LAST:event_registActionPerformed
 
     private void passwordtextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordtextActionPerformed
@@ -169,7 +169,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordtextActionPerformed
 
     private void configurationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_configurationActionPerformed
-        // TODO add your handling code here:
+     new Configuration().setVisible(true);   // TODO add your handling code here:
     }//GEN-LAST:event_configurationActionPerformed
 
     private void loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseClicked
@@ -177,12 +177,12 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_loginMouseClicked
 
     private void registMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registMouseClicked
-    new regist().setVisible(true);// TODO add your handling code here:
+    // TODO add your handling code here:
     
     }//GEN-LAST:event_registMouseClicked
 
     private void configurationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_configurationMouseClicked
-    new Configuration().setVisible(true);        // TODO add your handling code here:
+            // TODO add your handling code here:
     }//GEN-LAST:event_configurationMouseClicked
 
     /**

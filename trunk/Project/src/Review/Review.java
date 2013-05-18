@@ -270,6 +270,11 @@ public class Review extends javax.swing.JFrame {
                 SaveMouseClicked(evt);
             }
         });
+        Save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveActionPerformed(evt);
+            }
+        });
 
         Submit.setText("Submit");
         Submit.setPreferredSize(new java.awt.Dimension(69, 28));
@@ -348,11 +353,11 @@ public class Review extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
-        // TODO add your handling code here:
+this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_CancelActionPerformed
 
     private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
-        // TODO add your handling code here:
+this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_SubmitActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -388,16 +393,20 @@ public class Review extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField10ActionPerformed
 
     private void SaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveMouseClicked
-this.setVisible(false);          // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_SaveMouseClicked
 
     private void SubmitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmitMouseClicked
-this.setVisible(false);          // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_SubmitMouseClicked
 
     private void CancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelMouseClicked
-this.setVisible(false);          // TODO add your handling code here:
+       // TODO add your handling code here:
     }//GEN-LAST:event_CancelMouseClicked
+
+    private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
+this.setVisible(false);         // TODO add your handling code here:
+    }//GEN-LAST:event_SaveActionPerformed
 
     /**
      * @param args the command line arguments

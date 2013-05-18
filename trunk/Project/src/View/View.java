@@ -216,12 +216,22 @@ public class View extends javax.swing.JFrame {
                 cancelMouseClicked(evt);
             }
         });
+        cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelActionPerformed(evt);
+            }
+        });
 
         Modify.setText("Modify");
         Modify.setPreferredSize(new java.awt.Dimension(69, 28));
         Modify.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ModifyMouseClicked(evt);
+            }
+        });
+        Modify.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModifyActionPerformed(evt);
             }
         });
 
@@ -312,12 +322,20 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField9ActionPerformed
 
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
-this.setVisible(false);        // TODO add your handling code here:
+       // TODO add your handling code here:
     }//GEN-LAST:event_cancelMouseClicked
 
     private void ModifyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModifyMouseClicked
-new Modify().setVisible(true);       // TODO add your handling code here:
+    // TODO add your handling code here:
     }//GEN-LAST:event_ModifyMouseClicked
+
+    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
+this.setVisible(false);         // TODO add your handling code here:
+    }//GEN-LAST:event_cancelActionPerformed
+
+    private void ModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModifyActionPerformed
+new Modify().setVisible(true);           // TODO add your handling code here:
+    }//GEN-LAST:event_ModifyActionPerformed
 
     /**
      * @param args the command line arguments

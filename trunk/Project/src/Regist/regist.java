@@ -128,6 +128,11 @@ public class regist extends javax.swing.JFrame {
                 cancelMouseClicked(evt);
             }
         });
+        cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -221,16 +226,20 @@ public class regist extends javax.swing.JFrame {
     }//GEN-LAST:event_addresstextActionPerformed
 
     private void registActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registActionPerformed
-        // TODO add your handling code here:
+this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_registActionPerformed
 
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
-    this.setVisible(false);        // TODO add your handling code here:
+           // TODO add your handling code here:
     }//GEN-LAST:event_cancelMouseClicked
 
     private void registMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registMouseClicked
-    this.setVisible(false);      // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_registMouseClicked
+
+    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
+this.setVisible(false);         // TODO add your handling code here:
+    }//GEN-LAST:event_cancelActionPerformed
 
     /**
      * @param args the command line arguments

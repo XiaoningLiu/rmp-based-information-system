@@ -103,19 +103,19 @@ public class Revork extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SureActionPerformed
-        // TODO add your handling code here:
+this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_SureActionPerformed
 
     private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
-        // TODO add your handling code here:
+this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_CancelActionPerformed
 
     private void SureMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SureMouseClicked
-this.setVisible(false);          // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_SureMouseClicked
 
     private void CancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelMouseClicked
-this.setVisible(false);          // TODO add your handling code here:
+       // TODO add your handling code here:
     }//GEN-LAST:event_CancelMouseClicked
 
     /**
