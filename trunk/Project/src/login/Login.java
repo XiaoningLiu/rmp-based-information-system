@@ -8,6 +8,7 @@ import Configuration.Configuration;
 import Regist.regist;
 import user.user;
 import PaperManagement.Infor;
+import java.util.Vector;
 /**
  *
  * @author dianer
@@ -159,6 +160,13 @@ public class Login extends javax.swing.JFrame {
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
        // TODO add your handling code here:
         boolean flag=false;
+        Vector columns=new Vector();
+        columns.add("name");
+        columns.add("psd");
+        Vector[] vec=infor.jx.getTableRows("User", columns, "*");
+        for(int j=0;j<vec[0].size();j++)
+            if(vec[0].get(j).toString().equals(useridtext.getText())&&vec[1].get(j).toString().equals(passwordtext.getText()))
+                flag=true;
         if(flag){
             new user().setVisible(true);
             this.setVisible(false);
