@@ -7,7 +7,7 @@ package login;
 import Configuration.Configuration;
 import Regist.regist;
 import user.user;
-
+import PaperManagement.Infor;
 /**
  *
  * @author dianer
@@ -17,7 +17,9 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form UI
      */
-    public Login() {
+    private Infor infor;
+    public Login(Infor tmp) {
+        infor=tmp;
         initComponents();
     }
 
@@ -156,8 +158,11 @@ public class Login extends javax.swing.JFrame {
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
        // TODO add your handling code here:
-       new user().setVisible(true);
-       this.setVisible(false);
+        boolean flag=false;
+        if(flag){
+            new user().setVisible(true);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_loginActionPerformed
 
     private void registActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registActionPerformed
@@ -169,7 +174,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordtextActionPerformed
 
     private void configurationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_configurationActionPerformed
-     new Configuration().setVisible(true);   // TODO add your handling code here:
+     new Configuration(infor).setVisible(true);   // TODO add your handling code here:
     }//GEN-LAST:event_configurationActionPerformed
 
     private void loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseClicked
@@ -215,7 +220,7 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+               // new Login().setVisible(true);
             }
         });
     }
