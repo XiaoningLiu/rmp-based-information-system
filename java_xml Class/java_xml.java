@@ -28,41 +28,6 @@ public class java_xml {
 	  //System.out.print(document.asXML());
       return document;
     }   
-    public static String get(String getElement, String url){
-    	String tabletmp=url.substring(0,url.lastIndexOf("/"));
-    	String table=tabletmp.substring(tabletmp.lastIndexOf("/"));
-    	System.out.print(table);
-    	Document document=initialize(url);
-    	Element root = document.getRootElement();
-        String result="";
-        List list = document.selectNodes("/Resources"+table+"/record"); 
-        Iterator iter = list.iterator();
-        while(iter.hasNext()){
-           Element bookElement = (Element)iter.next();
-           Iterator iterator = bookElement.elementIterator(getElement);
-           while(iterator.hasNext()){
-               Element titleElement=(Element)iterator.next();
-               result+=titleElement.getText()+"\n";
-           }
-        }  
-        return result;
-    }
-    public static void post(String uri,String description,String attributeName,String primarykey,String column,String postURL){
-        Document document = DocumentHelper.createDocument();
-        Element singleElement = document.addElement("single");
-        singleElement.addAttribute("uri",uri);
-        singleElement.addAttribute("description",description);
-        Element recordElement = singleElement.addElement("record");
-        Element primarykeyElement = recordElement.addElement("primarykey");
-        primarykeyElement.setText(primarykey);
-        Element columnElement = recordElement.addElement("column");
-        columnElement.addAttribute("attributeName",attributeName);
-        columnElement.setText(column);
-        System.out.print(java_http.reqForPost(postURL, document.asXML()));
-        
-        
-    }
-
     /**
      * Return the available index
      * PS: Only for tables using integer as index
@@ -373,54 +338,4 @@ public class java_xml {
     	return finalResult;
     }
     
-    
-    public static void main(String args[])
-    {
-    	//System.out.println(getTableIndex("Paper"));
-    	
-    	Vector<String> columns = new Vector<String>();
-    	columns.add("name");
-    	//columns.add("psd");
-    	//getAssFromCom("User", "review", columns, "1");
-    	//getTableRows("User", columns, "?name=lxn");
-    	getComFromSig("User", "release", "Paper", columns, "1");
-    	
-    	
-    	/*
-    	delTableRow("release", "43@1");
-    	
-    	
-    	
-    	Vector<String> columns = new Vector<String>();
-    	columns.add("primarykey");
-    	columns.add("refer");
-    	Vector<String> values = new Vector<String>();
-    	values.add(getTableIndex("reference"));
-    	values.add("www.baidu.com.com");
-    	
-    	putTableRow("reference", "0", columns, values);
-    	*/
-    	
-    	
-    	
-    	// just a test for get data from rmp
-    	/*
-    	String table = new String("User");
-    	String url = new String(serverUrl + table + "/*");
-    	Document doc = initialize(url);
-    	
-    	String result = new String();
-    	
-    	List list = doc.selectNodes("//" + table + "/record");
-    	for(Iterator iter = list.iterator(); iter.hasNext();){
-    		Element ele = (Element)iter.next();
-    		Iterator eleIter = ele.elementIterator("primarykey");
-    		if(eleIter.hasNext()){
-    			Element e = (Element)eleIter.next();
-    			result = e.getText();
-    			System.out.println(result);
-    		}
-    	}
-    	*/
-    }
 }  
