@@ -13,8 +13,11 @@ public class Configuration extends javax.swing.JFrame {
     /**
      * Creates new form Configuration
      */
-    public Configuration() {
+    private PaperManagement.Infor infor;
+    public Configuration(PaperManagement.Infor tmp) {
+        infor=tmp;
         initComponents();
+        jTextField1.setText(infor.jx.serverUrl);
     }
 
     /**
@@ -113,7 +116,8 @@ public class Configuration extends javax.swing.JFrame {
     }//GEN-LAST:event_CancelActionPerformed
 
     private void OkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkActionPerformed
-    this.setVisible(false);         // TODO add your handling code here:
+        infor.jx.serverUrl=jTextField1.getText();
+        this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_OkActionPerformed
 
     /**
@@ -146,7 +150,7 @@ public class Configuration extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Configuration().setVisible(true);
+              //  new Configuration().setVisible(true);
             }
         });
     }

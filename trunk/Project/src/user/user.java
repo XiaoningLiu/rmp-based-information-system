@@ -507,7 +507,7 @@ public class user extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ConfigurationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfigurationActionPerformed
-        new Configuration().setVisible(true);    // TODO add your handling code here:
+        //new Configuration(infor).setVisible(true);    // TODO add your handling code here:
     }//GEN-LAST:event_ConfigurationActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -549,7 +549,7 @@ public class user extends javax.swing.JFrame {
 
     private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
  this.setVisible(false);
-        new Login().setVisible(true);         // TODO add your handling code here:
+//        new Login().setVisible(true);         // TODO add your handling code here:
     }//GEN-LAST:event_LogoutActionPerformed
 
     private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
