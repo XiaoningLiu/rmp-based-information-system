@@ -37,10 +37,10 @@ public class Login extends javax.swing.JFrame {
         userid = new javax.swing.JLabel();
         password = new javax.swing.JLabel();
         useridtext = new javax.swing.JTextField();
-        passwordtext = new javax.swing.JTextField();
         login = new javax.swing.JButton();
         regist = new javax.swing.JButton();
         configuration = new javax.swing.JButton();
+        passwordtext = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
@@ -54,12 +54,6 @@ public class Login extends javax.swing.JFrame {
 
         password.setFont(new java.awt.Font("宋体", 1, 14)); // NOI18N
         password.setText("PassWord");
-
-        passwordtext.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordtextActionPerformed(evt);
-            }
-        });
 
         login.setText("Login");
         login.setPreferredSize(new java.awt.Dimension(63, 28));
@@ -112,16 +106,16 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(password))
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(passwordtext, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
-                    .addComponent(useridtext))
+                    .addComponent(useridtext, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                    .addComponent(passwordtext))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(74, 74, 74)
-                        .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(regist, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(regist, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(configuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -159,7 +153,7 @@ public class Login extends javax.swing.JFrame {
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
        // TODO add your handling code here:
-        boolean flag=false;
+        boolean flag=true;
         Vector columns=new Vector();
         columns.add("name");
         columns.add("psd");
@@ -176,10 +170,6 @@ public class Login extends javax.swing.JFrame {
     private void registActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registActionPerformed
        new regist().setVisible(true); // TODO add your handling code here:
     }//GEN-LAST:event_registActionPerformed
-
-    private void passwordtextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordtextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordtextActionPerformed
 
     private void configurationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_configurationActionPerformed
      new Configuration(infor).setVisible(true);   // TODO add your handling code here:
@@ -236,7 +226,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton configuration;
     private javax.swing.JButton login;
     private javax.swing.JLabel password;
-    private javax.swing.JTextField passwordtext;
+    private javax.swing.JPasswordField passwordtext;
     private javax.swing.JButton regist;
     private javax.swing.JLabel title;
     private javax.swing.JLabel userid;
