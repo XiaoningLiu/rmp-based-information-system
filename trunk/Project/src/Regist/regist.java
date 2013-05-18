@@ -4,16 +4,21 @@
  */
 package Regist;
 
+import PaperManagement.Infor;
+
 /**
  *
  * @author dianer
  */
 public class regist extends javax.swing.JFrame {
+    Infor infor = new Infor();
+    
 
     /**
      * Creates new form regist
      */
-    public regist() {
+    public regist(Infor inf) {
+        infor = inf; 
         initComponents();
     }
 
@@ -226,7 +231,8 @@ public class regist extends javax.swing.JFrame {
     }//GEN-LAST:event_addresstextActionPerformed
 
     private void registActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registActionPerformed
-this.setVisible(false);         // TODO add your handling code here:
+    
+        this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_registActionPerformed
 
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
