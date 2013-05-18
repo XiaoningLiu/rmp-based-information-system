@@ -226,6 +226,7 @@ public class regist extends javax.swing.JFrame {
         columns.add("name");
         columns.add("address");
         columns.add("education");
+        columns.add("type");
         Vector values=new Vector();
         values.add(useridtext.getText());
         values.add(passwordtext.getText());
@@ -233,6 +234,7 @@ public class regist extends javax.swing.JFrame {
         values.add(nametext.getText());
         values.add(addresstext.getText());
         values.add(educationtext.getText());
+        values.add("common");
         if(infor.jx.getTableRows("User", columns, useridtext.getText())[0].isEmpty())
         {
             infor.jx.postTableRow("User", useridtext.getText(), columns, values);
