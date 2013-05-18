@@ -5,7 +5,7 @@
 package Regist;
 
 import PaperManagement.Infor;
-
+import java.util.Vector;
 /**
  *
  * @author dianer
@@ -219,8 +219,25 @@ public class regist extends javax.swing.JFrame {
     }//GEN-LAST:event_addresstextActionPerformed
 
     private void registActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registActionPerformed
-    
-        this.setVisible(false);         // TODO add your handling code here:
+        Vector columns=new Vector();
+        columns.add("primarykey");
+        columns.add("psd");
+        columns.add("email");
+        columns.add("name");
+        columns.add("address");
+        columns.add("education");
+        Vector values=new Vector();
+        values.add(useridtext.getText());
+        values.add(passwordtext.getText());
+        values.add(emailtext.getText());
+        values.add(nametext.getText());
+        values.add(addresstext.getText());
+        values.add(educationtext.getText());
+        if(infor.jx.getTableRows("User", columns, useridtext.getText())[0].isEmpty())
+        {
+            infor.jx.postTableRow("User", useridtext.getText(), columns, values);
+            this.setVisible(false);         // TODO add your handling code here:
+        }
     }//GEN-LAST:event_registActionPerformed
 
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
@@ -265,7 +282,7 @@ this.setVisible(false);         // TODO add your handling code here:
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new regist().setVisible(true);
+               // new regist().setVisible(true);
             }
         });
     }
