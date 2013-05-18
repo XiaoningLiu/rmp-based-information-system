@@ -156,6 +156,8 @@ public class Login extends javax.swing.JFrame {
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
        // TODO add your handling code here:
+       new user().setVisible(true);
+       this.setVisible(false);
     }//GEN-LAST:event_loginActionPerformed
 
     private void registActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registActionPerformed
@@ -171,8 +173,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_configurationActionPerformed
 
     private void loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseClicked
-      new user().setVisible(true);  // TODO add your handling code here:
-      this.setVisible(false);//
+      
     }//GEN-LAST:event_loginMouseClicked
 
     private void registMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registMouseClicked
