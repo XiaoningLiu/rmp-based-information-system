@@ -47,12 +47,22 @@ public class Configuration extends javax.swing.JFrame {
                 CancelMouseClicked(evt);
             }
         });
+        Cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelActionPerformed(evt);
+            }
+        });
 
         Ok.setText("Ok");
         Ok.setPreferredSize(new java.awt.Dimension(69, 28));
         Ok.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 OkMouseClicked(evt);
+            }
+        });
+        Ok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OkActionPerformed(evt);
             }
         });
 
@@ -91,12 +101,20 @@ public class Configuration extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void OkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OkMouseClicked
-this.setVisible(false);          // TODO add your handling code here:
+          // TODO add your handling code here:
     }//GEN-LAST:event_OkMouseClicked
 
     private void CancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CancelMouseClicked
-this.setVisible(false);          // TODO add your handling code here:
+         // TODO add your handling code here:
     }//GEN-LAST:event_CancelMouseClicked
+
+    private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
+      this.setVisible(false);   // TODO add your handling code here:
+    }//GEN-LAST:event_CancelActionPerformed
+
+    private void OkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkActionPerformed
+    this.setVisible(false);         // TODO add your handling code here:
+    }//GEN-LAST:event_OkActionPerformed
 
     /**
      * @param args the command line arguments

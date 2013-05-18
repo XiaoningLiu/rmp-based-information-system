@@ -51,10 +51,10 @@ public class user extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        Configuration = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        Logout = new javax.swing.JMenuItem();
+        Exit = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         Submit = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -417,35 +417,45 @@ public class user extends javax.swing.JFrame {
 
         jMenu1.setText("System");
 
-        jMenuItem2.setText("Configuration");
-        jMenuItem2.addMouseListener(new java.awt.event.MouseAdapter() {
+        Configuration.setText("Configuration");
+        Configuration.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuItem2MouseClicked(evt);
+                ConfigurationMouseClicked(evt);
             }
         });
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        Configuration.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                ConfigurationActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenu1.add(Configuration);
         jMenu1.add(jSeparator2);
 
-        jMenuItem3.setText("Logout");
-        jMenuItem3.addMouseListener(new java.awt.event.MouseAdapter() {
+        Logout.setText("Logout");
+        Logout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuItem3MouseClicked(evt);
+                LogoutMouseClicked(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
+        Logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogoutActionPerformed(evt);
+            }
+        });
+        jMenu1.add(Logout);
 
-        jMenuItem4.setText("Exit");
-        jMenuItem4.addMouseListener(new java.awt.event.MouseAdapter() {
+        Exit.setText("Exit");
+        Exit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuItem4MouseClicked(evt);
+                ExitMouseClicked(evt);
             }
         });
-        jMenu1.add(jMenuItem4);
+        Exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExitActionPerformed(evt);
+            }
+        });
+        jMenu1.add(Exit);
 
         jMenuBar1.add(jMenu1);
 
@@ -455,6 +465,11 @@ public class user extends javax.swing.JFrame {
         Submit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 SubmitMouseClicked(evt);
+            }
+        });
+        Submit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubmitActionPerformed(evt);
             }
         });
         jMenu2.add(Submit);
@@ -470,7 +485,7 @@ public class user extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 801, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -479,7 +494,7 @@ public class user extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 677, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -491,9 +506,9 @@ public class user extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void ConfigurationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfigurationActionPerformed
         new Configuration().setVisible(true);    // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_ConfigurationActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
@@ -515,23 +530,35 @@ public class user extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SearchActionPerformed
 
-    private void jMenuItem2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MouseClicked
+    private void ConfigurationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConfigurationMouseClicked
      // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2MouseClicked
+    }//GEN-LAST:event_ConfigurationMouseClicked
 
-    private void jMenuItem4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem4MouseClicked
-this.setVisible(false);        // TODO add your handling code here:
+    private void ExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitMouseClicked
+       // TODO add your handling code here:
 
-    }//GEN-LAST:event_jMenuItem4MouseClicked
+    }//GEN-LAST:event_ExitMouseClicked
 
-    private void jMenuItem3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem3MouseClicked
-    this.setVisible(false);
-        new Login().setVisible(true);         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3MouseClicked
+    private void LogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogoutMouseClicked
+           // TODO add your handling code here:
+    }//GEN-LAST:event_LogoutMouseClicked
 
     private void SubmitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmitMouseClicked
-       new Submit().setVisible(true);  // TODO add your handling code here:
+         // TODO add your handling code here:
     }//GEN-LAST:event_SubmitMouseClicked
+
+    private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
+ this.setVisible(false);
+        new Login().setVisible(true);         // TODO add your handling code here:
+    }//GEN-LAST:event_LogoutActionPerformed
+
+    private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
+this.setVisible(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_ExitActionPerformed
+
+    private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
+      new Submit().setVisible(true);   // TODO add your handling code here:
+    }//GEN-LAST:event_SubmitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -568,6 +595,9 @@ this.setVisible(false);        // TODO add your handling code here:
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Configuration;
+    private javax.swing.JMenuItem Exit;
+    private javax.swing.JMenuItem Logout;
     private javax.swing.JButton Search;
     private javax.swing.JMenuItem Submit;
     private javax.swing.JLabel jLabel1;
@@ -580,9 +610,6 @@ this.setVisible(false);        // TODO add your handling code here:
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
