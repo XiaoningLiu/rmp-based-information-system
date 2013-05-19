@@ -728,6 +728,7 @@ model2.fireTableDataChanged();
         column.add("title");
         column.add("keywords");
         column.add("author");
+        column.add("state");
         Vector []result=infor.jx.getTableRows("Paper", column, "*");
         for(int i=0;i<result[0].size();i++)
         {
@@ -737,7 +738,8 @@ model2.fireTableDataChanged();
             column1.add("postDate");
             int number=infor.jx.getAssFromSig("paper", "judge", column2, result[0].get(i).toString())[0].size();
             if((!infor.jx.getAssFromSig("paper", "judge", column2, result[0].get(i).toString())[0].isEmpty())
-                    &&(!(infor.jx.getSigFromCom("Paper", "paperHasVersion", "PaperVersion", column1, result[0].get(i).toString())[0].isEmpty())))
+                    &&(!(infor.jx.getSigFromCom("Paper", "paperHasVersion", "PaperVersion", column1, result[0].get(i).toString())[0].isEmpty()))
+                    &&result[4].get(i).toString().equals("passed"))
             {
                 String p_date=infor.jx.getAssFromSig("paper", "judge", column2, result[0].get(i).toString())[0].get(0).toString();
                 if(result[1].get(i).toString().contains(jTextField1.getText())
