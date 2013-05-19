@@ -8,6 +8,7 @@ import Browser.Browser;
 import Configuration.Configuration;
 import Modify.Modify;
 import Submit.Submit;
+import View.View;
 import login.Login;
 import java.util.Vector;
 import java_xml.java_xml;
@@ -109,8 +110,10 @@ model2.fireTableDataChanged();
         jMenuItem1 = new javax.swing.JMenuItem();
         jPopupMenu2 = new javax.swing.JPopupMenu();
         jMenuItem_delete = new javax.swing.JMenuItem();
+        jMenuItem_view = new javax.swing.JMenuItem();
         jPopupMenu3 = new javax.swing.JPopupMenu();
         jMenuItem_modify = new javax.swing.JMenuItem();
+        jMenuItem_view1 = new javax.swing.JMenuItem();
         jDialog1 = new javax.swing.JDialog();
         jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -161,6 +164,14 @@ model2.fireTableDataChanged();
         });
         jPopupMenu2.add(jMenuItem_delete);
 
+        jMenuItem_view.setText("View");
+        jMenuItem_view.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_viewActionPerformed(evt);
+            }
+        });
+        jPopupMenu2.add(jMenuItem_view);
+
         jMenuItem_modify.setText("Modify");
         jMenuItem_modify.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,7 +180,16 @@ model2.fireTableDataChanged();
         });
         jPopupMenu3.add(jMenuItem_modify);
 
+        jMenuItem_view1.setText("View");
+        jMenuItem_view1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_view1ActionPerformed(evt);
+            }
+        });
+        jPopupMenu3.add(jMenuItem_view1);
+
         jDialog1.setTitle("Are you sure?");
+        jDialog1.setResizable(false);
 
         jLabel7.setText("Are you sure?");
 
@@ -217,7 +237,6 @@ model2.fireTableDataChanged();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Paper Management System");
-        setPreferredSize(new java.awt.Dimension(800, 800));
 
         jTabbedPane1.setName(""); // NOI18N
 
@@ -779,7 +798,7 @@ this.setVisible(false);        // TODO add your handling code here:
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // get selected paperId
-        int selectedRow = jTable1.getSelectedColumn();
+        int selectedRow = jTable1.getSelectedRow();
         String selectedPaperId = jTable1.getValueAt(selectedRow, 0).toString();
         
         // pop the review window
@@ -813,7 +832,7 @@ this.setVisible(false);        // TODO add your handling code here:
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        int selectedRow = jTable2.getSelectedColumn();
+        int selectedRow = jTable2.getSelectedRow();
         String selectedPaperId = jTable2.getValueAt(selectedRow, 0).toString();
      
         // delete the selected paper
@@ -832,7 +851,7 @@ this.setVisible(false);        // TODO add your handling code here:
 
     private void jMenuItem_modifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_modifyActionPerformed
         // TODO add your handling code here:
-        int selectedRow = jTable2.getSelectedColumn();
+        int selectedRow = jTable2.getSelectedRow();
         String selectedPaperId = jTable2.getValueAt(selectedRow, 0).toString();
         
         Modify modifyWin =  new Modify(selectedPaperId);
@@ -840,6 +859,24 @@ this.setVisible(false);        // TODO add your handling code here:
         
         //modifyWin.add
     }//GEN-LAST:event_jMenuItem_modifyActionPerformed
+
+    private void jMenuItem_viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_viewActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = jTable2.getSelectedRow();
+        String selectedPaperId = jTable2.getValueAt(selectedRow, 0).toString();
+        
+        View viewWin =  new View(selectedPaperId);
+        viewWin.setVisible(true);
+    }//GEN-LAST:event_jMenuItem_viewActionPerformed
+
+    private void jMenuItem_view1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_view1ActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = jTable2.getSelectedRow();
+        String selectedPaperId = jTable2.getValueAt(selectedRow, 0).toString();
+        
+        View viewWin =  new View(selectedPaperId);
+        viewWin.setVisible(true);
+    }//GEN-LAST:event_jMenuItem_view1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -898,6 +935,8 @@ this.setVisible(false);        // TODO add your handling code here:
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem_delete;
     private javax.swing.JMenuItem jMenuItem_modify;
+    private javax.swing.JMenuItem jMenuItem_view;
+    private javax.swing.JMenuItem jMenuItem_view1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
