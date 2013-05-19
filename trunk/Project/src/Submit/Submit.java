@@ -6,6 +6,7 @@ package Submit;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Vector;
+import java.util.Random;
 /**
  *
  * @author dianer
@@ -305,8 +306,22 @@ this.setVisible(false);         // TODO add your handling code here:
         infor.jx.postTableRow("PaperVersion", pv, columns3, values3);
 
         //about review
-        Vector reviewerID=new Vector();
-        
+        Vector columnr=new Vector();
+        columnr.add("primarykey");
+        columnr.add("type");
+        Vector[] ur=infor.jx.getTableRows("User", columnr, "*");
+        Vector uri=new Vector();//to memorize the reviewer id
+        for(int i=0;i<ur[0].size();i++)
+        {
+            if(ur[1].get(i).toString().equals("reviewer"));
+            {
+                uri.add(ur[0].get(i).toString());
+            }
+        }
+        Random random = new Random();
+        String reviewer=uri.get(Math.abs(random.nextInt())%(uri.size())).toString();
+
+        System.out.print(reviewer+"\n");
 
         Vector columns4=new Vector();
         columns4.add("domainKey");
@@ -314,11 +329,11 @@ this.setVisible(false);         // TODO add your handling code here:
         columns4.add("isFinish");
         columns4.add("finishTime");
         Vector values4=new Vector();
-        values4.add("89757");
+        values4.add(reviewer);
         values4.add(values.get(0).toString());
         values4.add("no");
         values4.add(matter1.format(dt));
-        infor.jx.postTableRow("review", "89757@"+values.get(0).toString(), columns4, values4);
+        infor.jx.postTableRow("review", reviewer+"@"+values.get(0).toString(), columns4, values4);
 
 
         this.setVisible(false);         // TODO add your handling code here:
