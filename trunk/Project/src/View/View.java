@@ -5,6 +5,9 @@
 package View;
 
 import Modify.Modify;
+import java.awt.event.ItemEvent;
+import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -12,11 +15,66 @@ import Modify.Modify;
  */
 public class View extends javax.swing.JFrame {
 
+    private String currentPaperId;
     /**
      * Creates new form View
      */
-    public View() {
-        initComponents();
+    public View(String paperId) {
+        initComponents();    
+        currentPaperId = paperId;
+        
+        
+        Vector<String> columns = new Vector();
+        columns.add("title");
+        columns.add("author");
+        columns.add("source");
+        columns.add("keywords");
+        columns.add("state");
+        
+        // get paperResult
+        Vector[] paperResult = java_xml.java_xml.getTableRows("Paper", columns, paperId);
+        
+        // get uploadDate & abstract & body
+        columns.clear();
+        columns.add("postDate");
+        columns.add("description");;
+        columns.add("body");
+        Vector[] paperVersionResult = java_xml.java_xml.getSigFromCom("Paper", "paperHasVersion", "PaperVersion", columns, paperId);
+        int paperVersionCounter = paperVersionResult[0].size();
+        
+        // put information into window
+        jTextField1.setText(paperResult[0].get(0).toString());
+        jTextField3.setText(paperResult[1].get(0).toString());
+        jTextField6.setText(paperResult[2].get(0).toString());
+        jTextField9.setText(paperResult[3].get(0).toString());
+        jTextField4.setText(paperResult[4].get(0).toString());
+        jTextField5.setText(paperVersionResult[0].get(paperVersionCounter-1).toString());
+        jTextField8.setText(paperVersionResult[1].get(paperVersionCounter-1).toString());        
+        
+        // put different History
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>();
+        for(int i = 0; i < paperVersionResult[0].size(); i++){
+            model.addElement(""+i);
+        }
+        Edition.setModel(model);
+        Edition.setSelectedIndex(paperVersionCounter-1);
+        jTextArea1.setText(paperVersionResult[2].get(paperVersionCounter-1).toString());
+
+   
+        // get different review information
+        columns.clear();
+        columns.add("advice");
+        Vector[] reviewResult = java_xml.java_xml.getAssFromSig("Paper", "review", columns, paperId);
+        int reviewCounter = reviewResult[0].size(); 
+        
+        model = new DefaultComboBoxModel<String>();
+        for(int i = 0; i < reviewResult[0].size(); i++){
+            model.addElement(reviewResult[0].get(i).toString());
+        }
+        jComboBox1.setModel(model);
+        
+        jComboBox1.setSelectedIndex(reviewCounter - 1);
+        jTextArea2.setText(reviewResult[0].get(reviewCounter-1).toString());
     }
 
     /**
@@ -200,6 +258,11 @@ public class View extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         Edition.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Edition", "Item 2", "Item 3", "Item 4" }));
+        Edition.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                EditionItemStateChanged(evt);
+            }
+        });
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
@@ -310,6 +373,19 @@ public class View extends javax.swing.JFrame {
 this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_cancelActionPerformed
 
+    private void EditionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_EditionItemStateChanged
+        // TODO add your handling code here:
+        if(evt.getStateChange() == ItemEvent.SELECTED){
+            System.out.println("Version selected: " + evt.getItem().toString());
+            
+            // display the corresponding body
+            Vector<String> columns = new Vector();
+            columns.add("body");
+            Vector[] paperVersionResult = java_xml.java_xml.getSigFromCom("Paper", "paperHasVersion", "PaperVersion", columns, currentPaperId);
+            jTextArea1.setText(paperVersionResult[0].get(Integer.parseInt(evt.getItem().toString())).toString());
+        }
+    }//GEN-LAST:event_EditionItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -340,7 +416,7 @@ this.setVisible(false);         // TODO add your handling code here:
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new View().setVisible(true);
+                //new View().setVisible(true);
             }
         });
     }
