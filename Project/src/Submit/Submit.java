@@ -3,6 +3,8 @@
  * and open the template in the editor.
  */
 package Submit;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Vector;
 /**
  *
@@ -297,7 +299,9 @@ this.setVisible(false);         // TODO add your handling code here:
         values3.add(pv);
         values3.add("the first version");
         values3.add(jTextArea1.getText());
-        values3.add("20130519");
+        Date dt=new Date();
+        SimpleDateFormat matter1=new SimpleDateFormat("yyyyMMdd");    
+        values3.add(matter1.format(dt));
         infor.jx.postTableRow("PaperVersion", pv, columns3, values3);
 
         this.setVisible(false);         // TODO add your handling code here:
