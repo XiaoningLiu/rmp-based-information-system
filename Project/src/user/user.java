@@ -71,7 +71,7 @@ model2.fireTableDataChanged();
         Vector[] result = java_xml.getSigFromCom("User", "release", "Paper", columns, infor.currentUser);
         
         // Get corresponding modified date from table paperVersion
-        Vector<String> modifyDates = new Vector<>();
+        Vector<String> modifyDates = new Vector();
         for(int i = 0; i < result[0].size(); i++){
             String paperId = result[0].get(0).toString();
             columns.clear();
