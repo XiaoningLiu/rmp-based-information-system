@@ -4,7 +4,10 @@
  */
 package Reviewer;
 
+import Browser.Browser;
 import Configuration.Configuration;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 import login.Login;
 
 /**
@@ -12,6 +15,22 @@ import login.Login;
  * @author dianer
  */
 public class Reviewer extends javax.swing.JFrame {
+    private DefaultTableModel model1=new DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Title", "Author", "Keyword", "ModificationDate", "PublishDate"
+            }
+        );
+     private DefaultTableModel model2=new DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Title", "ModificationDate", "State", "Go Through Time"
+            }
+        );
 
     /**
      * Creates new form Reviewer
@@ -20,6 +39,8 @@ public class Reviewer extends javax.swing.JFrame {
     public Reviewer(PaperManagement.Infor tmp) {
         infor=tmp;
         initComponents();
+        jTable1.setModel(model1);
+        jTable2.setModel(model2);
     }
 
     /**
@@ -31,6 +52,8 @@ public class Reviewer extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -57,6 +80,14 @@ public class Reviewer extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+
+        jMenuItem1.setText("View");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Paper Management System (Reviewer)");
@@ -267,6 +298,11 @@ public class Reviewer extends javax.swing.JFrame {
                 "Title", "Author", "Keyword", "ModificationDate", "PublishDate"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -473,7 +509,7 @@ public class Reviewer extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-//new Configuration().setVisible(true);        // TODO add your handling code here:
+new Configuration(infor).setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -494,6 +530,46 @@ public class Reviewer extends javax.swing.JFrame {
 
     private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
         // TODO add your handling code here:
+        //first clear jTable1
+        model1=new DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Title", "Author", "Keyword", "ModificationDate", "PublishDate"
+            }
+        );
+        //search&show
+        Vector column=new Vector();
+        column.add("primarykey");
+        column.add("title");
+        column.add("keywords");
+        column.add("author");
+        Vector []result=infor.jx.getTableRows("Paper", column, "*");
+        for(int i=0;i<result[0].size();i++)
+        {
+            Vector column2=new Vector();
+            column2.add("getTime");
+            Vector column1=new Vector();
+            column1.add("postDate");
+            int number=infor.jx.getAssFromSig("paper", "judge", column2, result[0].get(i).toString())[0].size();
+            if((!infor.jx.getAssFromSig("paper", "judge", column2, result[0].get(i).toString())[0].isEmpty())
+                    &&(!(infor.jx.getSigFromCom("Paper", "paperHasVersion", "PaperVersion", column1, result[0].get(i).toString())[0].isEmpty())))
+            {
+                String p_date=infor.jx.getAssFromSig("paper", "judge", column2, result[0].get(i).toString())[0].get(0).toString();
+                if(result[1].get(i).toString().contains(jTextField1.getText())
+                &&result[2].get(i).toString().contains(jTextField4.getText())
+                &&result[3].get(i).toString().contains(jTextField3.getText())
+                &&p_date.contains(jTextField5.getText()))
+                {
+                    Vector []tmp=infor.jx.getSigFromCom("Paper", "paperHasVersion", "PaperVersion", column1, result[0].get(i).toString());
+                    String m_date=tmp[0].get(tmp[0].size()-1).toString();
+                    addRow1(result[0].get(i).toString(), result[1].get(i).toString(),result[2].get(i).toString(),result[3].get(i).toString(),
+                        m_date,p_date);
+                }
+            }
+        }
+        jTable1.setModel(model1);
     }//GEN-LAST:event_SearchActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -504,6 +580,26 @@ this.setVisible(false);
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
 this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int selectedRow = jTable1.rowAtPoint(evt.getPoint());
+        jTable1.setRowSelectionInterval(selectedRow, selectedRow);
+        
+        if( evt.getButton() == 3 )
+        {
+            jPopupMenu1.show(jTable1, evt.getX(), evt.getY());
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+         int selectedRow = jTable1.getSelectedRow();
+        String selectedPaperId = jTable1.getValueAt(selectedRow, 0).toString();
+        
+        // pop the review window
+        new Browser(selectedPaperId).setVisible(true);     
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -550,12 +646,14 @@ this.setVisible(false);         // TODO add your handling code here:
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPopupMenu.Separator jSeparator2;
@@ -567,4 +665,8 @@ this.setVisible(false);         // TODO add your handling code here:
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
+
+    private void addRow1(String s0, String s1, String s2, String s3, String s4, String s5) {
+        model1.insertRow(model1.getRowCount(), new Object[] {s0, s1,s2,s3,s4,s5 });
+    }
 }
