@@ -10,7 +10,7 @@ import java_xml.java_xml;
  * @author liuxiaoning
  */
 public class PaperManagement {
-     private static Infor infor = new Infor();
+     private static Infor  infor = new Infor();   
      
      
      public static void main(String args[]){
