@@ -7,6 +7,7 @@ package Reviewer;
 import Browser.Browser;
 import Configuration.Configuration;
 import java.util.Vector;
+import java_xml.java_xml;
 import javax.swing.table.DefaultTableModel;
 import login.Login;
 
@@ -36,6 +37,7 @@ public class Reviewer extends javax.swing.JFrame {
      * Creates new form Reviewer
      */
     private PaperManagement.Infor infor;
+    private String currentUserType;
     public Reviewer(PaperManagement.Infor tmp) {
         infor=tmp;
         initComponents();
@@ -670,5 +672,48 @@ this.setVisible(false);         // TODO add your handling code here:
 
     private void addRow1(String s0, String s1, String s2, String s3, String s4, String s5) {
         model1.insertRow(model1.getRowCount(), new Object[] {s0, s1,s2,s3,s4,s5 });
+    }
+    
+    public void addRow2(String s0, String s1,String s2,String s3,String s4){
+        model2.insertRow(model2.getRowCount(), new Object[] {s0, s1,s2,s3,s4 });
+    }
+    
+     private void updateReviewTable2()
+    {
+        model2.getDataVector().removeAllElements();
+model2.fireTableDataChanged();
+        
+        // Get all the papers of current user
+        Vector columns=new Vector();
+        columns.clear();
+        columns.add("primarykey");
+        columns.add("title");
+        columns.add("state");
+        columns.add("reviewCounter");
+        Vector[] result = java_xml.getSigFromCom("User", "review", "Paper", columns, infor.currentUser);
+        
+        // remove the papers which's not need reviewer's 
+        
+        
+        
+        // Get corresponding modified date from table paperVersion
+        Vector<String> modifyDates = new Vector();
+        for(int i = 0; i < result[0].size(); i++){
+            String paperId = result[0].get(0).toString();
+            columns.clear();
+            columns.add("postDate");
+            
+            Vector[] paperVersions = java_xml.getSigFromCom("Paper", "paperHasVersion", "PaperVersion", columns, paperId);
+            
+            int paperVersionCounter = paperVersions[0].size();
+            modifyDates.add(paperVersions[0].get(paperVersionCounter - 1).toString());
+        }
+        
+        // Put results into jTable2
+        for(int i = 0; i < result[0].size(); i++){
+            addRow2(result[0].get(i).toString(), result[1].get(i).toString(), modifyDates.get(i), result[2].get(i).toString(), result[3].get(i).toString());
+        }
+        
+        jTable2.setModel(model2);
     }
 }
