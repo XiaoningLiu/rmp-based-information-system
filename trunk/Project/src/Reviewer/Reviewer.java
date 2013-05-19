@@ -16,7 +16,9 @@ public class Reviewer extends javax.swing.JFrame {
     /**
      * Creates new form Reviewer
      */
-    public Reviewer() {
+    private PaperManagement.Infor infor;
+    public Reviewer(PaperManagement.Infor tmp) {
+        infor=tmp;
         initComponents();
     }
 
@@ -533,7 +535,7 @@ this.setVisible(false);         // TODO add your handling code here:
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Reviewer().setVisible(true);
+//                new Reviewer().setVisible(true);
             }
         });
     }

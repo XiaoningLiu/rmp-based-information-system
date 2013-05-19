@@ -304,6 +304,23 @@ this.setVisible(false);         // TODO add your handling code here:
         values3.add(matter1.format(dt));
         infor.jx.postTableRow("PaperVersion", pv, columns3, values3);
 
+        //about review
+        Vector reviewerID=new Vector();
+        
+
+        Vector columns4=new Vector();
+        columns4.add("domainKey");
+        columns4.add("rangeKey");
+        columns4.add("isFinish");
+        columns4.add("finishTime");
+        Vector values4=new Vector();
+        values4.add("89757");
+        values4.add(values.get(0).toString());
+        values4.add("no");
+        values4.add(matter1.format(dt));
+        infor.jx.postTableRow("review", "89757@"+values.get(0).toString(), columns4, values4);
+
+
         this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_SubmitActionPerformed
 

@@ -165,7 +165,15 @@ public class Login extends javax.swing.JFrame {
                 flag=true;
         if(flag){
             infor.currentUser=infor.jx.getTableRows("User", column, useridtext.getText())[0].get(0).toString();
-            new user(infor).setVisible(true);
+            Vector type=new Vector();
+            type.add("type");
+            String sType=infor.jx.getTableRows("User", type, infor.currentUser)[0].get(0).toString();
+            if(sType.equals("common"))
+                new user(infor).setVisible(true);
+            else if(sType.equals("reviewer"))
+                new Reviewer.Reviewer(infor).setVisible(true);
+            else if(sType.equals("chairman"))
+                new Reviewer.Reviewer(infor).setVisible(true);
             this.setVisible(false);
         }
     }//GEN-LAST:event_loginActionPerformed
