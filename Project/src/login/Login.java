@@ -157,12 +157,15 @@ public class Login extends javax.swing.JFrame {
         Vector columns=new Vector();
         columns.add("primarykey");
         columns.add("psd");
+        Vector column=new Vector();
+        column.add("primarykey");
         Vector[] vec=infor.jx.getTableRows("User", columns, "*");
         for(int j=0;j<vec[0].size();j++)
             if(vec[0].get(j).toString().equals(useridtext.getText())&&vec[1].get(j).toString().equals(passwordtext.getText()))
                 flag=true;
         if(flag){
-            new user().setVisible(true);
+            infor.currentUser=infor.jx.getTableRows("User", column, useridtext.getText())[0].get(0).toString();
+            new user(infor).setVisible(true);
             this.setVisible(false);
         }
     }//GEN-LAST:event_loginActionPerformed
