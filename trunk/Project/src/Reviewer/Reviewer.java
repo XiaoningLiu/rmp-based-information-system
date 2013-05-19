@@ -7,7 +7,6 @@ package Reviewer;
 import Browser.Browser;
 import Configuration.Configuration;
 import java.util.Vector;
-import java_xml.java_xml;
 import javax.swing.table.DefaultTableModel;
 import login.Login;
 
@@ -37,11 +36,94 @@ public class Reviewer extends javax.swing.JFrame {
      * Creates new form Reviewer
      */
     private PaperManagement.Infor infor;
-    private String currentUserType;
     public Reviewer(PaperManagement.Infor tmp) {
         infor=tmp;
         initComponents();
         jTable1.setModel(model1);
+        jTable2.setModel(model2);
+        Vector type=new Vector();
+        type.add("type");
+        String sType=infor.jx.getTableRows("User", type, infor.currentUser)[0].get(0).toString();
+        if(sType.equals("reviewer")){
+            updateTable2ForReviewer();
+        }
+        else if(sType.equals("chairman")){
+            updateTable2ForChairman();
+        }
+    }
+    private void updateTable2ForReviewer()
+    {
+        model2.getDataVector().removeAllElements();
+        model2.fireTableDataChanged();
+
+        // Get all the papers of current user
+        Vector columns=new Vector();
+        columns.clear();
+        columns.add("primarykey");
+        columns.add("title");
+        columns.add("state");
+        columns.add("reviewCounter");
+        Vector[] result = infor.jx.getSigFromCom("User", "review", "Paper", columns, infor.currentUser);
+
+        // Get corresponding modified date from table paperVersion
+        Vector<String> modifyDates = new Vector();
+        for(int i = 0; i < result[0].size(); i++){
+            String paperId = result[0].get(0).toString();
+            columns.clear();
+            columns.add("postDate");
+
+            Vector[] paperVersions = infor.jx.getSigFromCom("Paper", "paperHasVersion", "PaperVersion", columns, paperId);
+
+            int paperVersionCounter = paperVersions[0].size();
+            modifyDates.add(paperVersions[0].get(paperVersionCounter - 1).toString());
+        }
+
+        // Put results into jTable2
+        for(int i = 0; i < result[0].size(); i++){
+            Vector finished=new Vector();
+            finished.add("isFinish");
+            if(infor.jx.getAssFromCom("user", "review", finished, infor.currentUser)[0].get(0).toString().equals("no"))
+                addRow2(result[0].get(i).toString(), result[1].get(i).toString(), modifyDates.get(i), result[2].get(i).toString(), result[3].get(i).toString());
+        }
+
+        jTable2.setModel(model2);
+    }
+
+    private void updateTable2ForChairman()
+    {
+        model2.getDataVector().removeAllElements();
+        model2.fireTableDataChanged();
+
+        // Get all the papers of current user
+        Vector columns=new Vector();
+        columns.clear();
+        columns.add("primarykey");
+        columns.add("title");
+        columns.add("state");
+        columns.add("reviewCounter");
+        Vector[] result = infor.jx.getSigFromCom("User", "judge", "Paper", columns, infor.currentUser);
+
+        // Get corresponding modified date from table paperVersion
+        Vector<String> modifyDates = new Vector();
+        for(int i = 0; i < result[0].size(); i++){
+            String paperId = result[0].get(0).toString();
+            columns.clear();
+            columns.add("postDate");
+
+            Vector[] paperVersions = infor.jx.getSigFromCom("Paper", "paperHasVersion", "PaperVersion", columns, paperId);
+
+            int paperVersionCounter = paperVersions[0].size();
+            modifyDates.add(paperVersions[0].get(paperVersionCounter - 1).toString());
+        }
+
+        // Put results into jTable2
+        for(int i = 0; i < result[0].size(); i++){
+            Vector finished=new Vector();
+            finished.add("isFinish");
+            if(infor.jx.getAssFromCom("user", "judge", finished, infor.currentUser)[0].get(0).toString().equals("no"))
+                addRow2(result[0].get(i).toString(), result[1].get(i).toString(), modifyDates.get(i), result[2].get(i).toString(), result[3].get(i).toString());
+        }
+
         jTable2.setModel(model2);
     }
 
@@ -93,46 +175,45 @@ public class Reviewer extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Paper Management System (Reviewer)");
-        setPreferredSize(new java.awt.Dimension(800, 800));
 
         jTabbedPane1.setName(""); // NOI18N
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Attribution"));
 
-        jLabel4.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("宋体", 0, 14));
         jLabel4.setText("Title");
 
-        jLabel3.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("宋体", 0, 14));
         jLabel3.setText("Author");
 
-        jLabel5.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("宋体", 0, 14));
         jLabel5.setText("Keyword");
 
-        jLabel6.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("宋体", 0, 14));
         jLabel6.setText("PublishDate");
 
-        jTextField1.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
+        jTextField1.setFont(new java.awt.Font("宋体", 0, 14));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
 
-        jTextField3.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
+        jTextField3.setFont(new java.awt.Font("宋体", 0, 14));
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
             }
         });
 
-        jTextField4.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
+        jTextField4.setFont(new java.awt.Font("宋体", 0, 14));
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
             }
         });
 
-        jTextField5.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
+        jTextField5.setFont(new java.awt.Font("宋体", 0, 14));
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
@@ -158,7 +239,7 @@ public class Reviewer extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
-                    .addComponent(jTextField3))
+                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
@@ -166,10 +247,10 @@ public class Reviewer extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
-                    .addComponent(jTextField5))
+                    .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE))
                 .addGap(54, 54, 54))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(705, Short.MAX_VALUE)
                 .addComponent(Search)
                 .addContainerGap())
         );
@@ -312,14 +393,14 @@ public class Reviewer extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jTabbedPane1.addTab("Search Paper", jPanel2);
@@ -441,7 +522,7 @@ public class Reviewer extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 649, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Waiting Paper", jPanel1);
@@ -494,13 +575,13 @@ public class Reviewer extends javax.swing.JFrame {
             .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 651, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -673,47 +754,7 @@ this.setVisible(false);         // TODO add your handling code here:
     private void addRow1(String s0, String s1, String s2, String s3, String s4, String s5) {
         model1.insertRow(model1.getRowCount(), new Object[] {s0, s1,s2,s3,s4,s5 });
     }
-    
-    public void addRow2(String s0, String s1,String s2,String s3,String s4){
+    private void addRow2(String s0, String s1, String s2, String s3, String s4) {
         model2.insertRow(model2.getRowCount(), new Object[] {s0, s1,s2,s3,s4 });
-    }
-    
-     private void updateReviewTable2()
-    {
-        model2.getDataVector().removeAllElements();
-model2.fireTableDataChanged();
-        
-        // Get all the papers of current user
-        Vector columns=new Vector();
-        columns.clear();
-        columns.add("primarykey");
-        columns.add("title");
-        columns.add("state");
-        columns.add("reviewCounter");
-        Vector[] result = java_xml.getSigFromCom("User", "review", "Paper", columns, infor.currentUser);
-        
-        // remove the papers which's not need reviewer's 
-        
-        
-        
-        // Get corresponding modified date from table paperVersion
-        Vector<String> modifyDates = new Vector();
-        for(int i = 0; i < result[0].size(); i++){
-            String paperId = result[0].get(0).toString();
-            columns.clear();
-            columns.add("postDate");
-            
-            Vector[] paperVersions = java_xml.getSigFromCom("Paper", "paperHasVersion", "PaperVersion", columns, paperId);
-            
-            int paperVersionCounter = paperVersions[0].size();
-            modifyDates.add(paperVersions[0].get(paperVersionCounter - 1).toString());
-        }
-        
-        // Put results into jTable2
-        for(int i = 0; i < result[0].size(); i++){
-            addRow2(result[0].get(i).toString(), result[1].get(i).toString(), modifyDates.get(i), result[2].get(i).toString(), result[3].get(i).toString());
-        }
-        
-        jTable2.setModel(model2);
     }
 }
