@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 package Submit;
-
+import java.util.Vector;
 /**
  *
  * @author dianer
@@ -13,7 +13,9 @@ public class Submit extends javax.swing.JFrame {
     /**
      * Creates new form Submit
      */
-    public Submit() {
+    private PaperManagement.Infor infor;
+    public Submit(PaperManagement.Infor tmp) {
+        infor=tmp;
         initComponents();
     }
 
@@ -47,54 +49,54 @@ public class Submit extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Attribution"));
 
-        jLabel4.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("宋体", 0, 14));
         jLabel4.setText("Title");
 
-        jTextField1.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
+        jTextField1.setFont(new java.awt.Font("宋体", 0, 14));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
 
-        jTextField4.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
+        jTextField4.setFont(new java.awt.Font("宋体", 0, 14));
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("宋体", 0, 14));
         jLabel5.setText("Keyword");
 
-        jTextField5.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
+        jTextField5.setFont(new java.awt.Font("宋体", 0, 14));
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("宋体", 0, 14));
         jLabel6.setText("Abstract");
 
-        jTextField3.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
+        jTextField3.setFont(new java.awt.Font("宋体", 0, 14));
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("宋体", 0, 14));
         jLabel3.setText("Author");
 
-        jTextField6.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
+        jTextField6.setFont(new java.awt.Font("宋体", 0, 14));
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField6ActionPerformed(evt);
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("宋体", 0, 14));
         jLabel7.setText("Source");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -107,23 +109,23 @@ public class Submit extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField6))
+                        .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField3))))
+                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE))))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField4)
-                    .addComponent(jTextField5))
+                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE))
                 .addGap(55, 55, 55))
         );
         jPanel1Layout.setVerticalGroup(
@@ -193,7 +195,7 @@ public class Submit extends javax.swing.JFrame {
                 .addComponent(Submit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(245, 245, 245))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 790, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -201,7 +203,7 @@ public class Submit extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -245,7 +247,60 @@ this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_CancelActionPerformed
 
     private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
-this.setVisible(false);         // TODO add your handling code here:
+        //about paper:
+        Vector columns=new Vector();
+        columns.add("primaryKey");
+        columns.add("title");
+        columns.add("source");
+        columns.add("state");
+        columns.add("reviewCounter");
+        columns.add("author");
+        columns.add("keywords");
+        columns.add("currentVersion");
+        Vector values=new Vector();
+        values.add(infor.jx.getTableIndex("Paper"));
+        values.add(jTextField1.getText());
+        values.add(jTextField6.getText());
+        values.add("reviewing");//Just after releasing, hte state should be "reviewing"
+        values.add("0");//now no one has reviewed it
+        values.add(jTextField3.getText());
+        values.add(jTextField4.getText());
+        values.add("1");//the first version
+        infor.jx.postTableRow("Paper", values.get(0).toString(), columns, values);
+
+        //about release:
+        Vector columns1=new Vector();
+        columns1.add("domainkey");
+        columns1.add("rangekey");
+        Vector values1=new Vector();
+        values1.add(infor.currentUser);
+        values1.add(values.get(0).toString());
+        infor.jx.postTableRow("release", infor.currentUser+"@"+values.get(0).toString(), columns1, values1);
+
+        //about paperhasversion:
+        String pv=infor.jx.getTableIndex("PaperVersion");
+        Vector columns2=new Vector();
+        columns2.add("domainkey");
+        columns2.add("rangekey");
+        Vector values2=new Vector();
+        values2.add(values.get(0).toString());
+        values2.add(pv);
+        infor.jx.postTableRow("paperHasVersion", values.get(0).toString()+"@"+pv, columns2, values2);
+
+        //about paperversion:
+        Vector columns3=new Vector();
+        columns3.add("primaryKey");
+        columns3.add("description");
+        columns3.add("body");
+        columns3.add("postDate");
+        Vector values3=new Vector();
+        values3.add(pv);
+        values3.add("the first version");
+        values3.add(jTextArea1.getText());
+        values3.add("20130519");
+        infor.jx.postTableRow("PaperVersion", pv, columns3, values3);
+
+        this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_SubmitActionPerformed
 
     /**
@@ -278,7 +333,7 @@ this.setVisible(false);         // TODO add your handling code here:
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Submit().setVisible(true);
+                //new Submit().setVisible(true);
             }
         });
     }
