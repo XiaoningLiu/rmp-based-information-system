@@ -6,6 +6,7 @@ package user;
 
 import Browser.Browser;
 import Configuration.Configuration;
+import Modify.Modify;
 import Submit.Submit;
 import login.Login;
 import java.util.Vector;
@@ -51,13 +52,22 @@ public class user extends javax.swing.JFrame {
         jLabel1.setText("User Type: "+result[1].get(0).toString());
         jTable1.setModel(model1);
         
+        // update table2
+        updateTable2();
+    }
+    private void updateTable2()
+    {
+        model2.getDataVector().removeAllElements();
+model2.fireTableDataChanged();
+        
         // Get all the papers of current user
+        Vector columns=new Vector();
         columns.clear();
         columns.add("primarykey");
         columns.add("title");
         columns.add("state");
         columns.add("reviewCounter");
-        result = java_xml.getSigFromCom("User", "release", "Paper", columns, infor.currentUser);
+        Vector[] result = java_xml.getSigFromCom("User", "release", "Paper", columns, infor.currentUser);
         
         // Get corresponding modified date from table paperVersion
         Vector<String> modifyDates = new Vector<>();
@@ -74,17 +84,16 @@ public class user extends javax.swing.JFrame {
         
         // Put results into jTable2
         for(int i = 0; i < result[0].size(); i++){
-            addRow2(result[1].get(i).toString(), modifyDates.get(i), result[2].get(i).toString(), result[3].get(i).toString());
+            addRow2(result[0].get(i).toString(), result[1].get(i).toString(), modifyDates.get(i), result[2].get(i).toString(), result[3].get(i).toString());
         }
         
         jTable2.setModel(model2);
-
     }
     public void addRow1(String s0, String s1,String s2,String s3,String s4,String s5){
         model1.insertRow(model1.getRowCount(), new Object[] {s0, s1,s2,s3,s4,s5 });
     }
-    public void addRow2(String s1,String s2,String s3,String s4){
-        model2.insertRow(model2.getRowCount(), new Object[] { s1,s2,s3,s4 });
+    public void addRow2(String s0, String s1,String s2,String s3,String s4){
+        model2.insertRow(model2.getRowCount(), new Object[] {s0, s1,s2,s3,s4 });
     }
 
     /**
@@ -98,6 +107,14 @@ public class user extends javax.swing.JFrame {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jPopupMenu2 = new javax.swing.JPopupMenu();
+        jMenuItem_delete = new javax.swing.JMenuItem();
+        jPopupMenu3 = new javax.swing.JPopupMenu();
+        jMenuItem_modify = new javax.swing.JMenuItem();
+        jDialog1 = new javax.swing.JDialog();
+        jLabel7 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -135,6 +152,68 @@ public class user extends javax.swing.JFrame {
             }
         });
         jPopupMenu1.add(jMenuItem1);
+
+        jMenuItem_delete.setText("Delete");
+        jMenuItem_delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_deleteActionPerformed(evt);
+            }
+        });
+        jPopupMenu2.add(jMenuItem_delete);
+
+        jMenuItem_modify.setText("Modify");
+        jMenuItem_modify.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_modifyActionPerformed(evt);
+            }
+        });
+        jPopupMenu3.add(jMenuItem_modify);
+
+        jDialog1.setTitle("Are you sure?");
+
+        jLabel7.setText("Are you sure?");
+
+        jButton1.setText("No");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Yes");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialog1Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2))
+                    .addGroup(jDialog1Layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel7)))
+                .addContainerGap(44, Short.MAX_VALUE))
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addGroup(jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap())
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Paper Management System");
@@ -370,111 +449,116 @@ public class user extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title", "ModificationDate", "State", "Go Through Time"
+                "ID", "Title", "ModificationDate", "State", "Go Through Time"
             }
         ));
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable2);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -702,6 +786,61 @@ this.setVisible(false);        // TODO add your handling code here:
         new Browser(selectedPaperId).setVisible(true);       
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        int selectedRow = jTable2.rowAtPoint(evt.getPoint());
+        jTable2.setRowSelectionInterval(selectedRow, selectedRow);
+        
+        String selectedPaperState = jTable2.getValueAt(selectedRow, 3).toString();
+        
+        if( evt.getButton() == 3 && selectedPaperState.equals("passed"))
+        {
+            jPopupMenu2.show(jTable2, evt.getX(), evt.getY());
+        }
+        if( evt.getButton() == 3 && selectedPaperState.equals("reviewing"))
+        {
+            jPopupMenu3.show(jTable2, evt.getX(), evt.getY());
+        }
+    }//GEN-LAST:event_jTable2MouseClicked
+
+    private void jMenuItem_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_deleteActionPerformed
+        jDialog1.setVisible(true);       
+    }//GEN-LAST:event_jMenuItem_deleteActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        jDialog1.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = jTable2.getSelectedColumn();
+        String selectedPaperId = jTable2.getValueAt(selectedRow, 0).toString();
+     
+        // delete the selected paper
+        Vector<String> columns = new Vector();
+        columns.add("state");
+        Vector<String> values = new Vector();
+        values.add("deleted");
+        
+        java_xml.putTableRow("Paper", selectedPaperId, columns, values);
+        
+        jDialog1.setVisible(false);
+        
+        // reload the table2
+        updateTable2();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jMenuItem_modifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_modifyActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = jTable2.getSelectedColumn();
+        String selectedPaperId = jTable2.getValueAt(selectedRow, 0).toString();
+        
+        Modify modifyWin =  new Modify(selectedPaperId);
+        modifyWin.setVisible(true);
+        
+        //modifyWin.add
+    }//GEN-LAST:event_jMenuItem_modifyActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -742,21 +881,29 @@ this.setVisible(false);        // TODO add your handling code here:
     private javax.swing.JMenuItem Logout;
     private javax.swing.JButton Search;
     private javax.swing.JMenuItem Submit;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem_delete;
+    private javax.swing.JMenuItem jMenuItem_modify;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JPopupMenu jPopupMenu2;
+    private javax.swing.JPopupMenu jPopupMenu3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPopupMenu.Separator jSeparator2;

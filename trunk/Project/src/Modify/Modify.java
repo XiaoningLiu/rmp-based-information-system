@@ -4,17 +4,45 @@
  */
 package Modify;
 
+import java.util.Vector;
+import java.text.SimpleDateFormat;
+import java.util.Date;;
 /**
  *
  * @author dianer
  */
 public class Modify extends javax.swing.JFrame {
 
+    private String currentPaperId;
     /**
      * Creates new form Modify
      */
-    public Modify() {
+    public Modify(String paperId) {
         initComponents();
+        currentPaperId = paperId;
+        
+        Vector<String> columns = new Vector();
+        columns.add("title");
+        columns.add("author");
+        columns.add("source");
+        columns.add("keywords");
+        
+        // get paperResult
+        Vector[] paperResult = java_xml.java_xml.getTableRows("Paper", columns, paperId);
+        
+        // get uploadDate & abstract & body
+        columns.clear();
+        columns.add("description");;
+        columns.add("body");
+        Vector[] paperVersionResult = java_xml.java_xml.getSigFromCom("Paper", "paperHasVersion", "PaperVersion", columns, paperId);
+        int paperVersionCounter = paperVersionResult[0].size();
+        
+        jTextField11.setText(paperResult[0].get(0).toString());
+        jTextField12.setText(paperResult[3].get(0).toString());
+        jTextField13.setText(paperVersionResult[0].get(paperVersionCounter - 1).toString());
+        jTextField14.setText(paperResult[1].get(0).toString());
+        jTextField15.setText(paperResult[2].get(0).toString());
+        jTextArea1.setText(paperVersionResult[1].get(paperVersionCounter - 1).toString());
     }
 
     /**
@@ -245,7 +273,50 @@ this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_CancelActionPerformed
 
     private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
-this.setVisible(false);         // TODO add your handling code here:
+        // create new version of this paper
+        
+        /* change version */
+        // get current version 
+        Vector<String> columns = new Vector();
+        columns.add("currentVersion");
+        
+        Vector[] versionResult = java_xml.java_xml.getTableRows("Paper", columns, currentPaperId);
+        String version = versionResult[0].get(0).toString();
+        int newVersion = Integer.parseInt(version) + 1;
+        
+        // set new version
+        Vector<String> values = new Vector();
+        values.add("" + newVersion);
+        java_xml.java_xml.putTableRow("Paper", currentPaperId, columns, values);
+        
+        // create table PaperVersion
+        columns.clear();
+        columns.add("primaryKey");
+        columns.add("description");
+        columns.add("body");
+        columns.add("postDate");
+        
+        values.clear();
+        String newIndex = java_xml.java_xml.getTableIndex("PaperVersion");
+        values.add(newIndex);
+        values.add(jTextField13.getText());
+        values.add(jTextArea1.getText());
+        Date dt=new Date();
+        SimpleDateFormat matter1=new SimpleDateFormat("yyyyMMdd");      
+        values.add(matter1.format(dt));
+        
+        java_xml.java_xml.postTableRow("PaperVersion", newIndex, columns, values);
+        
+        // create table paperHasVersion
+        columns.clear();
+        columns.add("domainkey");
+        columns.add("rangekey");
+        values.clear();
+        values.add(currentPaperId);
+        values.add(newIndex);
+        java_xml.java_xml.postTableRow("paperHasVersion", ""+currentPaperId+"@"+newIndex, columns, values);
+        
+        this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_SubmitActionPerformed
 
     /**
@@ -278,7 +349,7 @@ this.setVisible(false);         // TODO add your handling code here:
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Modify().setVisible(true);
+//                new Modify().setVisible(true);
             }
         });
     }
