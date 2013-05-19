@@ -69,12 +69,14 @@ public class View extends javax.swing.JFrame {
         
         model = new DefaultComboBoxModel<String>();
         for(int i = 0; i < reviewResult[0].size(); i++){
-            model.addElement(reviewResult[0].get(i).toString());
+            model.addElement("" + i);
         }
         jComboBox1.setModel(model);
         
-        jComboBox1.setSelectedIndex(reviewCounter - 1);
-        jTextArea2.setText(reviewResult[0].get(reviewCounter-1).toString());
+        if (reviewCounter > 0){
+            jComboBox1.setSelectedIndex(reviewCounter - 1);
+            jTextArea2.setText(reviewResult[0].get(reviewCounter-1).toString());
+        }
     }
 
     /**
@@ -269,6 +271,11 @@ public class View extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTextArea2);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Reviewer", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
+            }
+        });
 
         cancel.setLabel("Cancel");
         cancel.setName("cancle"); // NOI18N
@@ -307,13 +314,13 @@ public class View extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(13, 13, 13)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Edition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
                 .addGap(28, 28, 28)
                 .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -386,6 +393,19 @@ this.setVisible(false);         // TODO add your handling code here:
         }
     }//GEN-LAST:event_EditionItemStateChanged
 
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        // TODO add your handling code here:
+        if(evt.getStateChange() == ItemEvent.SELECTED){
+            System.out.println("Review selected: " + evt.getItem().toString());
+            
+            // display the corresponding body
+            Vector<String> columns = new Vector();
+            columns.add("advice");
+            Vector[] reviewResult = java_xml.java_xml.getAssFromCom("Paper", "review", columns, currentPaperId);
+            jTextArea1.setText(reviewResult[0].get(Integer.parseInt(evt.getItem().toString())).toString());
+        }
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -416,7 +436,7 @@ this.setVisible(false);         // TODO add your handling code here:
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new View().setVisible(true);
+                new View("9").setVisible(true);
             }
         });
     }
