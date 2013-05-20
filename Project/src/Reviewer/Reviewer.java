@@ -41,6 +41,16 @@ public class Reviewer extends javax.swing.JFrame {
     public Reviewer(PaperManagement.Infor tmp) {
         infor=tmp;
         initComponents();
+
+        //welcome&user type
+        Vector columns=new Vector();
+        columns.add("name");
+        columns.add("type");
+        Vector[] result=infor.jx.getTableRows("User", columns, infor.currentUser);
+
+        jLabel2.setText("Welcome, "+result[0].get(0).toString()+" !");
+        jLabel1.setText("User Type: "+result[1].get(0).toString());
+
         jTable1.setModel(model1);
         jTable2.setModel(model2);
         Vector type=new Vector();
@@ -698,7 +708,7 @@ this.setVisible(false);         // TODO add your handling code here:
         // TODO add your handling code here:
         int selectedRow = jTable2.getSelectedRow();
         String selectedPaperId = jTable2.getValueAt(selectedRow, 0).toString();
-        
+
         Vector type=new Vector();
         type.add("type");
         String sType=infor.jx.getTableRows("User", type, infor.currentUser)[0].get(0).toString();
