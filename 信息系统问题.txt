@@ -1,0 +1,68 @@
+
+===================================
+To WK:
+* Submit:
+  * 表字段paperVersion.description: 用来存储论文abstract； 1
+  * Submit后刷新用户自己论文界面；  
+  * view窗口关闭后user界面的刷新；
+
+* Search:
+  * 仅需搜索passed论文； 2
+  * 完成另外两个窗口的搜索(右键)； 3
+
+
+
+To LXN:
+* 普通用户搜索论文界面的右键弹出窗口
+  * 添加paperid栏
+  * 
+* 
+
+To DZW：
+* User Search界面：
+  * 最下面状态栏中 Welcome 与 User Type显示不全；
+* 新窗口弹出：
+  * 左上角移到界面界面中间；
+* 用户界面的右击：revoke
+* 登录界面：用户名、密码错误的提示；
+  * 服务器配置界面：
+  * 注册界面：用户名重复的提示、
+* UserId 纯数字的要求；
+* 所有jTable变为不可编辑状态
+* 所有的表字段加入ID字段,并且不能交换位置；
+* Brower 界面只需看到最后的效果状态；
+* 所有窗口X的动作修正；
+* Modify 窗口只能修改Abstract与body
+
+===================================
+To All:
+* UserId 必须纯数字；因为下面的形式会报错，不能有效的搜索到关联表；
+http://59.78.38.4:8080/rmp/resource/papermanagement/user/?primarykey=donlxn
+(另外解决方案是修改Java——xml的从表获取到另外表的函数)
+
+
+
+
+
+==============================================
+UI: 
+* 窗口弹出位置：左上角
+* 
+
+功能：
+* Reviewer： 
+  * 右键弹出
+  * submit：1. 分配下一个人（chairman） 2. paper表、review表字段更新；
+  * save： 
+* Chairman:
+  * 右键弹出
+  * pass:  1. paper 2. judge
+  * save 
+  * fail: 1. paper 2. judge
+
+* All：
+  页面刷新（提交……）
+
+
+
+
