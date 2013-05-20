@@ -13,14 +13,16 @@ import javax.swing.DefaultComboBoxModel;
  * @author dianer
  */
 public class Review_chairman extends javax.swing.JFrame {
-    private String currentPaperId; 
+    private String currentPaperId;
+    private String currentUserID;
 
     /**
      * Creates new form Review_chairman
      */
-    public Review_chairman(String paperId) {
+    public Review_chairman(String paperId,String userID) {
         initComponents();      
-        currentPaperId = paperId;       
+        currentPaperId = paperId;
+        currentUserID=userID;
         
         Vector<String> columns = new Vector();
         columns.add("title");
@@ -444,7 +446,17 @@ public class Review_chairman extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void PassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PassActionPerformed
-this.setVisible(false);         // TODO add your handling code here:
+        //add advice
+        Vector column=new Vector();
+        column.add("advice");
+        column.add("isFinish");
+        Vector value=new Vector();
+        value.add(jTextArea3.getText());
+        value.add("yes");
+        java_xml.java_xml.postTableRow("judge", currentUserID+"@"+currentPaperId, column, value);
+
+        //add table:judge
+        this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_PassActionPerformed
 
     private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
@@ -567,7 +579,7 @@ this.setVisible(false);         // TODO add your handling code here:
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Review_chairman("9").setVisible(true);
+                new Review_chairman("9","111").setVisible(true);
             }
         });
     }
