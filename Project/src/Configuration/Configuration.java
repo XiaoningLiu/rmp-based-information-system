@@ -17,6 +17,7 @@ public class Configuration extends javax.swing.JFrame {
     public Configuration(PaperManagement.Infor tmp) {
         infor=tmp;
         initComponents();
+        setLocationRelativeTo(null);
         jTextField1.setText(infor.jx.serverUrl);
     }
 
@@ -46,6 +47,11 @@ public class Configuration extends javax.swing.JFrame {
         jLabel1.setText("Server");
 
         jTextField1.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         Cancel.setText("Cancel");
         Cancel.setPreferredSize(new java.awt.Dimension(69, 28));
@@ -85,8 +91,8 @@ public class Configuration extends javax.swing.JFrame {
                 .addGap(29, 29, 29))
             .addGroup(layout.createSequentialGroup()
                 .addGap(85, 85, 85)
-                .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89)
+                .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73)
                 .addComponent(Ok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -105,6 +111,7 @@ public class Configuration extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void OkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OkMouseClicked
@@ -123,6 +130,10 @@ public class Configuration extends javax.swing.JFrame {
         infor.jx.serverUrl=jTextField1.getText();
         this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_OkActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments

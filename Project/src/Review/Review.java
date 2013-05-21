@@ -23,7 +23,7 @@ public class Review extends javax.swing.JFrame {
      */
     public Review(String paperId,String userID) {
         initComponents();
-        
+        setLocationRelativeTo(null);
         currentPaperId = paperId;
         currentUserID=userID;
         

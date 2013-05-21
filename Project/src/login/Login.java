@@ -8,7 +8,9 @@ import Configuration.Configuration;
 import Regist.regist;
 import user.user;
 import PaperManagement.Infor;
+import static java.awt.image.ImageObserver.WIDTH;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 /**
  *
  * @author dianer
@@ -22,6 +24,7 @@ public class Login extends javax.swing.JFrame {
     public Login(Infor tmp) {
         infor=tmp;
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -54,6 +57,15 @@ public class Login extends javax.swing.JFrame {
 
         password.setFont(new java.awt.Font("宋体", 1, 14)); // NOI18N
         password.setText("PassWord");
+
+        useridtext.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                useridtextKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                useridtextKeyTyped(evt);
+            }
+        });
 
         login.setText("Login");
         login.setPreferredSize(new java.awt.Dimension(63, 28));
@@ -161,8 +173,14 @@ public class Login extends javax.swing.JFrame {
         column.add("primarykey");
         Vector[] vec=infor.jx.getTableRows("User", columns, "*");
         for(int j=0;j<vec[0].size();j++)
+        {
             if(vec[0].get(j).toString().equals(useridtext.getText())&&vec[1].get(j).toString().equals(passwordtext.getText()))
-                flag=true;
+            { flag=true;
+                //System.out.print("aaaaaaaaaaaa");
+            }
+         
+        }
+                
         if(flag){
             infor.currentUser=infor.jx.getTableRows("User", column, useridtext.getText())[0].get(0).toString();
             Vector type=new Vector();
@@ -176,6 +194,11 @@ public class Login extends javax.swing.JFrame {
                 new Reviewer.Reviewer(infor).setVisible(true);
             this.setVisible(false);
         }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Please check your UserId & Password", "Notice", JOptionPane.OK_OPTION);
+        }
+        
     }//GEN-LAST:event_loginActionPerformed
 
     private void registActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registActionPerformed
@@ -198,6 +221,18 @@ public class Login extends javax.swing.JFrame {
     private void configurationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_configurationMouseClicked
             // TODO add your handling code here:
     }//GEN-LAST:event_configurationMouseClicked
+
+    private void useridtextKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_useridtextKeyTyped
+       
+        //if(evt.getKeyChar()<='0'||evt.getKeyChar()>='9') 
+        //{ evt.setKeyCode(0);System.out.print("bbbbbbbbbbb"); }// TODO add your handling code here:
+        
+    }//GEN-LAST:event_useridtextKeyTyped
+
+    private void useridtextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_useridtextKeyPressed
+     //if(evt.getKeyChar()<='0'||evt.getKeyChar()>='9') 
+       // { System.out.print(evt.getKeyCode()); }   // TODO add your handling code here:
+    }//GEN-LAST:event_useridtextKeyPressed
 
     /**
      * @param args the command line arguments

@@ -20,6 +20,7 @@ public class Submit extends javax.swing.JFrame {
     public Submit(PaperManagement.Infor tmp) {
         infor=tmp;
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

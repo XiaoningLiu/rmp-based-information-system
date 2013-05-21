@@ -20,7 +20,8 @@ public class Review_chairman extends javax.swing.JFrame {
      * Creates new form Review_chairman
      */
     public Review_chairman(String paperId,String userID) {
-        initComponents();      
+        initComponents();   
+        setLocationRelativeTo(null);
         currentPaperId = paperId;
         currentUserID=userID;
         

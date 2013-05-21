@@ -6,6 +6,7 @@ package Regist;
 
 import PaperManagement.Infor;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 /**
  *
  * @author dianer
@@ -20,6 +21,7 @@ public class regist extends javax.swing.JFrame {
     public regist(Infor inf) {
         infor = inf; 
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -240,6 +242,9 @@ public class regist extends javax.swing.JFrame {
             infor.jx.postTableRow("User", useridtext.getText(), columns, values);
             this.setVisible(false);         // TODO add your handling code here:
         }
+           else
+                JOptionPane.showMessageDialog(null, "Your UserId has been registed!", "Notice", JOptionPane.OK_OPTION);                         
+   
     }//GEN-LAST:event_registActionPerformed
 
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
