@@ -7,7 +7,9 @@ package Review;
 import java.awt.event.ItemEvent;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
-
+import java.util.Random;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 /**
  *
  * @author dianer
@@ -437,12 +439,55 @@ this.setVisible(false);         // TODO add your handling code here:
         Vector column=new Vector();
         column.add("advice");
         column.add("isFinish");
+        column.add("reviewCounter");
         Vector value=new Vector();
         value.add(jTextArea3.getText());
         value.add("yes");
-        java_xml.java_xml.postTableRow("review", currentUserID+"@"+currentPaperId, column, value);
+        value.add("1");
+        java_xml.java_xml.putTableRow("review", currentUserID+"@"+currentPaperId, column, value);
 
-        //add table:judge
+        //about judge
+        //first decide wich chairman to send
+        Vector columnr=new Vector();
+        columnr.add("primarykey");
+        columnr.add("type");
+        Vector[] ur=java_xml.java_xml.getTableRows("User", columnr, "*");
+        Vector uri=new Vector();//to memorize the reviewer id
+        for(int i=0;i<ur[0].size();i++)
+        {
+            if(ur[1].get(i).toString().equals("chairman"))
+            {
+                uri.add(ur[0].get(i).toString());
+            }
+        }
+        Random random = new Random();
+        String chairman=uri.get(Math.abs(random.nextInt())%(uri.size())).toString();
+
+        //add judge
+        Vector columnc=new Vector();
+        columnc.add("domainKey");
+        columnc.add("rangeKey");
+        columnc.add("getTime");
+        columnc.add("isFinish");
+        columnc.add("reviewCounter");
+        Vector valuec=new Vector();
+        valuec.add(chairman);
+        valuec.add(currentPaperId);
+        Date dt=new Date();
+        SimpleDateFormat matter1=new SimpleDateFormat("yyyyMMdd");
+        valuec.add(matter1.format(dt));
+        valuec.add("no");
+        valuec.add("2");
+        java_xml.java_xml.postTableRow("judge", chairman+"@"+currentPaperId, columnc, valuec);
+
+        //change review counter&state in paper
+        Vector columnRe=new Vector();
+        columnRe.add("reviewCounter");
+        columnRe.add("state");
+        Vector valueRe=new Vector();
+        valueRe.add("1");
+        valueRe.add("finalreving");
+        java_xml.java_xml.postTableRow("Paper", currentPaperId, columnRe, valueRe);
         
         this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_SubmitActionPerformed
@@ -492,7 +537,13 @@ this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_CancelMouseClicked
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
-this.setVisible(false);         // TODO add your handling code here:
+        //add advice
+        Vector column=new Vector();
+        column.add("advice");
+        Vector value=new Vector();
+        value.add(jTextArea3.getText());
+        java_xml.java_xml.putTableRow("review", currentUserID+"@"+currentPaperId, column, value);
+        this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_SaveActionPerformed
 
     private void EditionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_EditionItemStateChanged
