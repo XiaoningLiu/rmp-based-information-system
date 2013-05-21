@@ -15,7 +15,7 @@ import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 	  
 public class java_xml { 
-    public static String serverUrl = "http://192.168.1.109:8080/rmp/resource/papermanagement/";
+    public static String serverUrl = "http://192.168.147.1:8080/rmp/resource/papermanagement/";
 	
     public static Document initialize(String url) { 
 		String xmlInfo  =java_http.reqForGet(url);

@@ -19,6 +19,7 @@ public class Modify extends javax.swing.JFrame {
      */
     public Modify(String paperId) {
         initComponents();
+        setLocationRelativeTo(null);
         currentPaperId = paperId;
         
         Vector<String> columns = new Vector();

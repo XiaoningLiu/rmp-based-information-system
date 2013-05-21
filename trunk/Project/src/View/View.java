@@ -21,6 +21,7 @@ public class View extends javax.swing.JFrame {
      */
     public View(String paperId) {
         initComponents();    
+        setLocationRelativeTo(null);
         currentPaperId = paperId;
         
         

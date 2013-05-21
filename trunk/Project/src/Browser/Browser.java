@@ -17,7 +17,7 @@ public class Browser extends javax.swing.JFrame {
      */
     public Browser(String paperId) {
         initComponents();
-        
+        setLocationRelativeTo(null);
         /* Get all the information needed */
         Vector<String> columns = new Vector();
         columns.add("title");

@@ -15,6 +15,7 @@ public class Revork extends javax.swing.JFrame {
      */
     public Revork() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
