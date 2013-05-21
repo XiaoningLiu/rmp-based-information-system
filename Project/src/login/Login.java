@@ -8,6 +8,7 @@ import Configuration.Configuration;
 import Regist.regist;
 import user.user;
 import PaperManagement.Infor;
+import java.awt.event.KeyEvent;
 import static java.awt.image.ImageObserver.WIDTH;
 import java.util.Vector;
 import javax.swing.JOptionPane;
@@ -58,6 +59,11 @@ public class Login extends javax.swing.JFrame {
         password.setFont(new java.awt.Font("宋体", 1, 14)); // NOI18N
         password.setText("PassWord");
 
+        useridtext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                useridtextActionPerformed(evt);
+            }
+        });
         useridtext.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 useridtextKeyPressed(evt);
@@ -223,7 +229,14 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_configurationMouseClicked
 
     private void useridtextKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_useridtextKeyTyped
-       
+       if ((evt.getKeyChar() >= KeyEvent.VK_0 && evt.getKeyChar() <= evt.VK_9) 
+      || evt.getKeyChar() == evt.VK_ENTER || evt.getKeyChar() == evt.VK_TAB
+      || evt.getKeyChar() == evt.VK_BACK_SPACE || evt.getKeyChar() == evt.VK_DELETE 
+      || evt.getKeyChar() == evt.VK_LEFT || evt.getKeyChar() == evt.VK_RIGHT 
+      || evt.getKeyChar() == evt.VK_ESCAPE) 
+      return;   
+     evt.consume();
+
         //if(evt.getKeyChar()<='0'||evt.getKeyChar()>='9') 
         //{ evt.setKeyCode(0);System.out.print("bbbbbbbbbbb"); }// TODO add your handling code here:
         
@@ -233,6 +246,10 @@ public class Login extends javax.swing.JFrame {
      //if(evt.getKeyChar()<='0'||evt.getKeyChar()>='9') 
        // { System.out.print(evt.getKeyCode()); }   // TODO add your handling code here:
     }//GEN-LAST:event_useridtextKeyPressed
+
+    private void useridtextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useridtextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_useridtextActionPerformed
 
     /**
      * @param args the command line arguments

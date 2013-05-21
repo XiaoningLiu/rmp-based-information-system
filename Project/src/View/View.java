@@ -22,6 +22,17 @@ public class View extends javax.swing.JFrame {
     public View(String paperId) {
         initComponents();    
         setLocationRelativeTo(null);
+        jTextField1.setEditable(false); 
+        jTextField3.setEditable(false); 
+        jTextField4.setEditable(false); 
+        jTextField5.setEditable(false); 
+        jTextField6.setEditable(false); 
+        jTextField8.setEditable(false); 
+        jTextField9.setEditable(false); 
+        
+        
+        
+        
         currentPaperId = paperId;
         
         
