@@ -17,6 +17,14 @@ public class Browser extends javax.swing.JFrame {
      */
     public Browser(String paperId) {
         initComponents();
+        jTextField1.setEditable(false);  
+        jTextField3.setEditable(false); 
+        jTextField4.setEditable(false); 
+        jTextField5.setEditable(false); 
+        jTextField6.setEditable(false); 
+        jTextField8.setEditable(false); 
+        jTextField9.setEditable(false); 
+        jTextField10.setEditable(false); 
         setLocationRelativeTo(null);
         /* Get all the information needed */
         Vector<String> columns = new Vector();
@@ -135,6 +143,11 @@ public class Browser extends javax.swing.JFrame {
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
+            }
+        });
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField1FocusGained(evt);
             }
         });
 
@@ -337,6 +350,10 @@ public class Browser extends javax.swing.JFrame {
     private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
     this.setVisible(false);     // TODO add your handling code here:
     }//GEN-LAST:event_CancelActionPerformed
+
+    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+      // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1FocusGained
 
     /**
      * @param args the command line arguments

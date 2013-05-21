@@ -5,6 +5,7 @@
 package Regist;
 
 import PaperManagement.Infor;
+import java.awt.event.KeyEvent;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 /**
@@ -75,6 +76,11 @@ public class regist extends javax.swing.JFrame {
         useridtext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 useridtextActionPerformed(evt);
+            }
+        });
+        useridtext.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                useridtextKeyTyped(evt);
             }
         });
 
@@ -258,6 +264,16 @@ public class regist extends javax.swing.JFrame {
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
 this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_cancelActionPerformed
+
+    private void useridtextKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_useridtextKeyTyped
+ if ((evt.getKeyChar() >= KeyEvent.VK_0 && evt.getKeyChar() <= evt.VK_9) 
+      || evt.getKeyChar() == evt.VK_ENTER || evt.getKeyChar() == evt.VK_TAB
+      || evt.getKeyChar() == evt.VK_BACK_SPACE || evt.getKeyChar() == evt.VK_DELETE 
+      || evt.getKeyChar() == evt.VK_LEFT || evt.getKeyChar() == evt.VK_RIGHT 
+      || evt.getKeyChar() == evt.VK_ESCAPE) 
+      return;   
+     evt.consume();        // TODO add your handling code here:
+    }//GEN-LAST:event_useridtextKeyTyped
 
     /**
      * @param args the command line arguments

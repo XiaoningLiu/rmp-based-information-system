@@ -24,6 +24,16 @@ public class Review extends javax.swing.JFrame {
     public Review(String paperId,String userID) {
         initComponents();
         setLocationRelativeTo(null);
+        jTextField1.setEditable(false); 
+        jTextField3.setEditable(false); 
+        jTextField4.setEditable(false); 
+        jTextField5.setEditable(false); 
+        jTextField6.setEditable(false); 
+        jTextField8.setEditable(false); 
+        jTextField9.setEditable(false); 
+        jTextField10.setEditable(false); 
+        
+        
         currentPaperId = paperId;
         currentUserID=userID;
         
