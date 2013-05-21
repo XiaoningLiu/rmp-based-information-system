@@ -465,7 +465,7 @@ public class Review_chairman extends javax.swing.JFrame {
         Vector valueRe=new Vector();
         valueRe.add("2");
         valueRe.add("passed");
-        java_xml.java_xml.postTableRow("Paper", currentPaperId, columnRe, valueRe);
+        java_xml.java_xml.putTableRow("Paper", currentPaperId, columnRe, valueRe);
 
         this.setVisible(false);          // TODO add your handling code here:
     }//GEN-LAST:event_PassActionPerformed
@@ -493,7 +493,7 @@ this.setVisible(false);         // TODO add your handling code here:
         Vector valueRe=new Vector();
         valueRe.add("2");
         valueRe.add("failed");
-        java_xml.java_xml.postTableRow("Paper", currentPaperId, columnRe, valueRe);
+        java_xml.java_xml.putTableRow("Paper", currentPaperId, columnRe, valueRe);
 
         this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_RefuseActionPerformed
@@ -582,7 +582,7 @@ this.setVisible(false);         // TODO add your handling code here:
             Vector<String> columns = new Vector();
             columns.add("advice");
             Vector[] reviewResult = java_xml.java_xml.getAssFromCom("Paper", "review", columns, currentPaperId);
-            jTextArea1.setText(reviewResult[0].get(Integer.parseInt(evt.getItem().toString())).toString());
+            //jTextArea1.setText(reviewResult[0].get(Integer.parseInt(evt.getItem().toString())).toString());
         }
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
