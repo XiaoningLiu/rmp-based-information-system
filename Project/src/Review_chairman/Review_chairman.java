@@ -446,17 +446,27 @@ public class Review_chairman extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void PassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PassActionPerformed
-        //add advice
+        //add judge
         Vector column=new Vector();
         column.add("advice");
         column.add("isFinish");
+        column.add("reviewCounter");
         Vector value=new Vector();
         value.add(jTextArea3.getText());
         value.add("yes");
-        java_xml.java_xml.postTableRow("judge", currentUserID+"@"+currentPaperId, column, value);
+        value.add("2");
+        java_xml.java_xml.putTableRow("judge", currentUserID+"@"+currentPaperId, column, value);
 
-        //add table:judge
-        this.setVisible(false);         // TODO add your handling code here:
+        //change review counter&state in paper
+        Vector columnRe=new Vector();
+        columnRe.add("reviewCounter");
+        columnRe.add("state");
+        Vector valueRe=new Vector();
+        valueRe.add("2");
+        valueRe.add("passed");
+        java_xml.java_xml.postTableRow("Paper", currentPaperId, columnRe, valueRe);
+
+        this.setVisible(false);          // TODO add your handling code here:
     }//GEN-LAST:event_PassActionPerformed
 
     private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
@@ -464,7 +474,27 @@ this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_CancelActionPerformed
 
     private void RefuseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefuseActionPerformed
-this.setVisible(false);         // TODO add your handling code here:
+        //add judge
+        Vector column=new Vector();
+        column.add("advice");
+        column.add("isFinish");
+        column.add("reviewCounter");
+        Vector value=new Vector();
+        value.add(jTextArea3.getText());
+        value.add("yes");
+        value.add("2");
+        java_xml.java_xml.putTableRow("judge", currentUserID+"@"+currentPaperId, column, value);
+
+        //change review counter&state in paper
+        Vector columnRe=new Vector();
+        columnRe.add("reviewCounter");
+        columnRe.add("state");
+        Vector valueRe=new Vector();
+        valueRe.add("2");
+        valueRe.add("failed");
+        java_xml.java_xml.postTableRow("Paper", currentPaperId, columnRe, valueRe);
+
+        this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_RefuseActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -520,7 +550,13 @@ this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_CancelMouseClicked
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
-this.setVisible(false);         // TODO add your handling code here:
+        //add judge
+        Vector column=new Vector();
+        column.add("advice");
+        Vector value=new Vector();
+        value.add(jTextArea3.getText());
+        java_xml.java_xml.putTableRow("judge", currentUserID+"@"+currentPaperId, column, value);
+        this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_SaveActionPerformed
 
     private void EditionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_EditionItemStateChanged

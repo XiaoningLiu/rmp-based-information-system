@@ -313,7 +313,7 @@ this.setVisible(false);         // TODO add your handling code here:
         Vector uri=new Vector();//to memorize the reviewer id
         for(int i=0;i<ur[0].size();i++)
         {
-            if(ur[1].get(i).toString().equals("reviewer"));
+            if(ur[1].get(i).toString().equals("reviewer"))
             {
                 uri.add(ur[0].get(i).toString());
             }
@@ -321,13 +321,12 @@ this.setVisible(false);         // TODO add your handling code here:
         Random random = new Random();
         String reviewer=uri.get(Math.abs(random.nextInt())%(uri.size())).toString();
 
-        System.out.print(reviewer+"\n");
 
         Vector columns4=new Vector();
         columns4.add("domainKey");
         columns4.add("rangeKey");
         columns4.add("isFinish");
-        columns4.add("finishTime");
+        columns4.add("getTime");
         Vector values4=new Vector();
         values4.add(reviewer);
         values4.add(values.get(0).toString());
