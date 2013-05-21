@@ -94,8 +94,10 @@ public class Reviewer extends javax.swing.JFrame {
         for(int i = 0; i < result[0].size(); i++){
             Vector finished=new Vector();
             finished.add("isFinish");
-            if(infor.jx.getAssFromCom("user", "review", finished, infor.currentUser)[0].get(0).toString().equals("no"))
+            if(infor.jx.getAssFromCom("user", "review", finished, infor.currentUser)[0].get(i).toString().equals("no"))
+            {
                 addRow2(result[0].get(i).toString(), result[1].get(i).toString(), modifyDates.get(i), result[2].get(i).toString(), result[3].get(i).toString());
+            }
         }
 
         jTable2.setModel(model2);
@@ -132,7 +134,7 @@ public class Reviewer extends javax.swing.JFrame {
         for(int i = 0; i < result[0].size(); i++){
             Vector finished=new Vector();
             finished.add("isFinish");
-            if(infor.jx.getAssFromCom("user", "judge", finished, infor.currentUser)[0].get(0).toString().equals("no"))
+            if(infor.jx.getAssFromCom("user", "judge", finished, infor.currentUser)[0].get(i).toString().equals("no"))
                 addRow2(result[0].get(i).toString(), result[1].get(i).toString(), modifyDates.get(i), result[2].get(i).toString(), result[3].get(i).toString());
         }
 

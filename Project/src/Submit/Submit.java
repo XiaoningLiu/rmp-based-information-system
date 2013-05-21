@@ -328,11 +328,13 @@ this.setVisible(false);         // TODO add your handling code here:
         columns4.add("rangeKey");
         columns4.add("isFinish");
         columns4.add("getTime");
+        columns4.add("reviewCounter");
         Vector values4=new Vector();
         values4.add(reviewer);
         values4.add(values.get(0).toString());
         values4.add("no");
         values4.add(matter1.format(dt));
+        values4.add("1");
         infor.jx.postTableRow("review", reviewer+"@"+values.get(0).toString(), columns4, values4);
 
 
