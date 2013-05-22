@@ -312,11 +312,7 @@ model2.fireTableDataChanged();
                     .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE))
                 .addGap(54, 54, 54))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-<<<<<<< .mine
                 .addContainerGap(710, Short.MAX_VALUE)
-=======
-                .addContainerGap(704, Short.MAX_VALUE)
->>>>>>> .r58
                 .addComponent(Search)
                 .addContainerGap())
         );
