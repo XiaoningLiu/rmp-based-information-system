@@ -10,6 +10,7 @@ import user.user;
 import PaperManagement.Infor;
 import java.awt.event.KeyEvent;
 import static java.awt.image.ImageObserver.WIDTH;
+import java.net.ConnectException;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 /**
@@ -177,7 +178,15 @@ public class Login extends javax.swing.JFrame {
         columns.add("psd");
         Vector column=new Vector();
         column.add("primarykey");
-        Vector[] vec=infor.jx.getTableRows("User", columns, "*");
+        
+       // try{
+            Vector[] vec=infor.jx.getTableRows("User", columns, "*");
+      //  }catch(java.net.ConnectException){
+            
+       // }
+        
+        
+        
         for(int j=0;j<vec[0].size();j++)
         {
             if(vec[0].get(j).toString().equals(useridtext.getText())&&vec[1].get(j).toString().equals(passwordtext.getText()))
