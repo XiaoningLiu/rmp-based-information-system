@@ -43,7 +43,7 @@ public class user extends javax.swing.JFrame {
     public user(PaperManagement.Infor tmp) {
         infor=tmp;
         initComponents();
-        
+        setLocationRelativeTo(null);
         Vector columns=new Vector();
         columns.add("name");
         columns.add("type");

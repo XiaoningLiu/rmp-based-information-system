@@ -27,9 +27,9 @@
           <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="224" max="-2" attributes="0"/>
-              <Component id="Cancel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="193" max="32767" attributes="0"/>
-              <Component id="Submit" min="-2" max="-2" attributes="0"/>
+              <Component id="Cancel" min="-2" pref="86" max="-2" attributes="0"/>
+              <EmptySpace pref="160" max="32767" attributes="0"/>
+              <Component id="Submit" min="-2" pref="85" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="245" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
