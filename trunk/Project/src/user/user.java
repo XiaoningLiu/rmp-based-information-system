@@ -789,7 +789,7 @@ model2.fireTableDataChanged();
     }//GEN-LAST:event_LogoutActionPerformed
 
     private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
-this.setVisible(false);        // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_ExitActionPerformed
 
     private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
