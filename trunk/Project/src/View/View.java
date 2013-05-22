@@ -79,16 +79,13 @@ public class View extends javax.swing.JFrame {
         Vector[] reviewResult = java_xml.java_xml.getAssFromSig("Paper", "review", columns, paperId);
         int reviewCounter = reviewResult[0].size(); 
         
-        model = new DefaultComboBoxModel<String>();
-        for(int i = 0; i < reviewResult[0].size(); i++){
-            model.addElement("" + i);
+        DefaultComboBoxModel<String> reviewModel = new DefaultComboBoxModel<String>();
+        for(int i = 0; i < reviewCounter; i++){
+            reviewModel.addElement(""+i);
+            reviewModel.setSelectedItem(""+i);
+            jTextArea2.setText(reviewResult[0].get(i).toString());
         }
-        jComboBox1.setModel(model);
-        
-        if (reviewCounter > 0){
-            jComboBox1.setSelectedIndex(reviewCounter - 1);
-            jTextArea2.setText(reviewResult[0].get(reviewCounter-1).toString());
-        }
+        jComboBox1.setModel(reviewModel);
     }
 
     /**
@@ -413,8 +410,8 @@ this.setVisible(false);         // TODO add your handling code here:
             // display the corresponding body
             Vector<String> columns = new Vector();
             columns.add("advice");
-            Vector[] reviewResult = java_xml.java_xml.getAssFromCom("Paper", "review", columns, currentPaperId);
-            jTextArea1.setText(reviewResult[0].get(Integer.parseInt(evt.getItem().toString())).toString());
+            Vector[] reviewResult = java_xml.java_xml.getAssFromSig("Paper", "review", columns, currentPaperId);
+            jTextArea2.setText(reviewResult[0].get(Integer.parseInt(evt.getItem().toString())).toString());
         }
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 
