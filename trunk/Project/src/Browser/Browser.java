@@ -93,6 +93,7 @@ public class Browser extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Browser");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Paper Content"));
 
