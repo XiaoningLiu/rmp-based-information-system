@@ -122,7 +122,7 @@ public class Review_chairman extends javax.swing.JFrame {
         Cancel = new javax.swing.JButton();
         Refuse = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Review(Chairman)");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Attribution"));

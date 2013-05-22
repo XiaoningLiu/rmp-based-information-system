@@ -395,7 +395,15 @@ public class Reviewer extends javax.swing.JFrame {
             new String [] {
                 "Title", "Author", "Keyword", "ModificationDate", "PublishDate"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -526,7 +534,15 @@ public class Reviewer extends javax.swing.JFrame {
             new String [] {
                 "Title", "Author", "ModificationDate", "State", "Go Through Time"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable2MouseClicked(evt);
@@ -679,7 +695,7 @@ new Configuration(infor).setVisible(true);        // TODO add your handling code
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
 this.setVisible(false);
-        //new Login().setVisible(true);           // TODO add your handling code here:
+        new Login(infor).setVisible(true);         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed

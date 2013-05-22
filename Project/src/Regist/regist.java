@@ -8,19 +8,20 @@ import PaperManagement.Infor;
 import java.awt.event.KeyEvent;
 import java.util.Vector;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author dianer
  */
 public class regist extends javax.swing.JFrame {
+
     Infor infor = new Infor();
-    
 
     /**
      * Creates new form regist
      */
     public regist(Infor inf) {
-        infor = inf; 
+        infor = inf;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -49,7 +50,7 @@ public class regist extends javax.swing.JFrame {
         cancel = new javax.swing.JButton();
         passwordtext = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Regist");
         setName(""); // NOI18N
         setResizable(false);
@@ -227,7 +228,13 @@ public class regist extends javax.swing.JFrame {
     }//GEN-LAST:event_addresstextActionPerformed
 
     private void registActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registActionPerformed
-        Vector columns=new Vector();
+        if (useridtext.getText().isEmpty() || passwordtext.getText().isEmpty() || emailtext.getText().isEmpty()
+                || nametext.getText().isEmpty() || addresstext.getText().isEmpty() || educationtext.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please finish your form!", "Notice", JOptionPane.OK_OPTION);
+            return;
+        }
+
+        Vector columns = new Vector();
         columns.add("primarykey");
         columns.add("psd");
         columns.add("email");
@@ -235,7 +242,7 @@ public class regist extends javax.swing.JFrame {
         columns.add("address");
         columns.add("education");
         columns.add("type");
-        Vector values=new Vector();
+        Vector values = new Vector();
         values.add(useridtext.getText());
         values.add(passwordtext.getText());
         values.add(emailtext.getText());
@@ -243,18 +250,17 @@ public class regist extends javax.swing.JFrame {
         values.add(addresstext.getText());
         values.add(educationtext.getText());
         values.add("common");
-        if(infor.jx.getTableRows("User", columns, useridtext.getText())[0].isEmpty())
-        {
+        if (infor.jx.getTableRows("User", columns, useridtext.getText())[0].isEmpty()) {
             infor.jx.postTableRow("User", useridtext.getText(), columns, values);
             this.setVisible(false);         // TODO add your handling code here:
+        } else {
+            JOptionPane.showMessageDialog(null, "Your UserId has been registed!", "Notice", JOptionPane.OK_OPTION);
         }
-           else
-                JOptionPane.showMessageDialog(null, "Your UserId has been registed!", "Notice", JOptionPane.OK_OPTION);                         
-   
+
     }//GEN-LAST:event_registActionPerformed
 
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
-           // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_cancelMouseClicked
 
     private void registMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registMouseClicked
@@ -262,17 +268,18 @@ public class regist extends javax.swing.JFrame {
     }//GEN-LAST:event_registMouseClicked
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
-this.setVisible(false);         // TODO add your handling code here:
+        this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_cancelActionPerformed
 
     private void useridtextKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_useridtextKeyTyped
- if ((evt.getKeyChar() >= KeyEvent.VK_0 && evt.getKeyChar() <= evt.VK_9) 
-      || evt.getKeyChar() == evt.VK_ENTER || evt.getKeyChar() == evt.VK_TAB
-      || evt.getKeyChar() == evt.VK_BACK_SPACE || evt.getKeyChar() == evt.VK_DELETE 
-      || evt.getKeyChar() == evt.VK_LEFT || evt.getKeyChar() == evt.VK_RIGHT 
-      || evt.getKeyChar() == evt.VK_ESCAPE) 
-      return;   
-     evt.consume();        // TODO add your handling code here:
+        if ((evt.getKeyChar() >= KeyEvent.VK_0 && evt.getKeyChar() <= evt.VK_9)
+                || evt.getKeyChar() == evt.VK_ENTER || evt.getKeyChar() == evt.VK_TAB
+                || evt.getKeyChar() == evt.VK_BACK_SPACE || evt.getKeyChar() == evt.VK_DELETE
+                || evt.getKeyChar() == evt.VK_LEFT || evt.getKeyChar() == evt.VK_RIGHT
+                || evt.getKeyChar() == evt.VK_ESCAPE) {
+            return;
+        }
+        evt.consume();        // TODO add your handling code here:
     }//GEN-LAST:event_useridtextKeyTyped
 
     /**
@@ -305,7 +312,7 @@ this.setVisible(false);         // TODO add your handling code here:
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               // new regist().setVisible(true);
+                // new regist().setVisible(true);
             }
         });
     }
