@@ -12,6 +12,7 @@ import View.View;
 import login.Login;
 import java.util.Vector;
 import java_xml.java_xml;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -832,7 +833,24 @@ model2.fireTableDataChanged();
     }//GEN-LAST:event_jTable2MouseClicked
 
     private void jMenuItem_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_deleteActionPerformed
-        jDialog1.setVisible(true);       
+        //jDialog1.setVisible(true);    
+        String[] options = {"Cancel", "Confirm"};
+        int choice = JOptionPane.showOptionDialog(null, "Are you sure?", null, JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, null);
+        if (choice == 1){
+            int selectedRow = jTable2.getSelectedRow();
+            String selectedPaperId = jTable2.getValueAt(selectedRow, 0).toString();
+
+            // delete the selected paper
+            Vector<String> columns = new Vector();
+            columns.add("state");
+            Vector<String> values = new Vector();
+            values.add("deleted");
+            java_xml.putTableRow("Paper", selectedPaperId, columns, values);
+            jDialog1.setVisible(false);
+            
+            // reload the table2
+            updateTable2();
+        }
     }//GEN-LAST:event_jMenuItem_deleteActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

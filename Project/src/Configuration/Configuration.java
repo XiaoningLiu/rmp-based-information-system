@@ -127,7 +127,7 @@ public class Configuration extends javax.swing.JFrame {
     }//GEN-LAST:event_CancelActionPerformed
 
     private void OkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkActionPerformed
-        infor.jx.serverUrl=jTextField1.getText();
+        java_xml.java_xml.serverUrl=jTextField1.getText();
         this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_OkActionPerformed
 

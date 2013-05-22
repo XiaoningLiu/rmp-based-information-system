@@ -71,7 +71,7 @@ public class Review_chairman extends javax.swing.JFrame {
         
         model = new DefaultComboBoxModel<String>();
         for(int i = 0; i < reviewResult[0].size(); i++){
-            model.addElement(reviewResult[0].get(i).toString());
+            model.addElement(""+i);
         }
         jComboBox1.setModel(model);
         
@@ -581,8 +581,8 @@ this.setVisible(false);         // TODO add your handling code here:
             // display the corresponding body
             Vector<String> columns = new Vector();
             columns.add("advice");
-            Vector[] reviewResult = java_xml.java_xml.getAssFromCom("Paper", "review", columns, currentPaperId);
-            //jTextArea1.setText(reviewResult[0].get(Integer.parseInt(evt.getItem().toString())).toString());
+            Vector[] reviewResult = java_xml.java_xml.getAssFromSig("Paper", "review", columns, currentPaperId);
+            jTextArea2.setText(reviewResult[0].get(Integer.parseInt(evt.getItem().toString())).toString());
         }
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 

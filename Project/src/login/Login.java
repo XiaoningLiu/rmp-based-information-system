@@ -13,6 +13,7 @@ import static java.awt.image.ImageObserver.WIDTH;
 import java.net.ConnectException;
 import java.util.Vector;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author dianer
@@ -23,8 +24,9 @@ public class Login extends javax.swing.JFrame {
      * Creates new form UI
      */
     private Infor infor;
+
     public Login(Infor tmp) {
-        infor=tmp;
+        infor = tmp;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -171,89 +173,81 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-       // TODO add your handling code here:
-        boolean flag=false;
-        Vector columns=new Vector();
+        // TODO add your handling code here:
+        boolean flag = false;
+        Vector columns = new Vector();
         columns.add("primarykey");
         columns.add("psd");
-        Vector column=new Vector();
+        Vector column = new Vector();
         column.add("primarykey");
-        
-       // try{
-            Vector[] vec=infor.jx.getTableRows("User", columns, "*");
-      //  }catch(java.net.ConnectException){
-            
-       // }
-        
-        
-        
-        for(int j=0;j<vec[0].size();j++)
-        {
-            if(vec[0].get(j).toString().equals(useridtext.getText())&&vec[1].get(j).toString().equals(passwordtext.getText()))
-            { flag=true;
-                //System.out.print("aaaaaaaaaaaa");
+
+        try {
+            Vector[] vec = infor.jx.getTableRows("User", columns, "*");
+            for (int j = 0; j < vec[0].size(); j++) {
+                if (vec[0].get(j).toString().equals(useridtext.getText()) && vec[1].get(j).toString().equals(passwordtext.getText())) {
+                    flag = true;
+                    //System.out.print("aaaaaaaaaaaa");
+                }
             }
-         
+
+            if (flag) {
+                infor.currentUser = infor.jx.getTableRows("User", column, useridtext.getText())[0].get(0).toString();
+                Vector type = new Vector();
+                type.add("type");
+                String sType = infor.jx.getTableRows("User", type, infor.currentUser)[0].get(0).toString();
+                if (sType.equals("common")) {
+                    new user(infor).setVisible(true);
+                } else if (sType.equals("reviewer")) {
+                    new Reviewer.Reviewer(infor).setVisible(true);
+                } else if (sType.equals("chairman")) {
+                    new Reviewer.Reviewer(infor).setVisible(true);
+                }
+                this.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "Please check your UserId & Password", "Notice", JOptionPane.OK_OPTION);
+            }
+        } catch (Exception e) {
+            System.out.println("Network Error");
         }
-                
-        if(flag){
-            infor.currentUser=infor.jx.getTableRows("User", column, useridtext.getText())[0].get(0).toString();
-            Vector type=new Vector();
-            type.add("type");
-            String sType=infor.jx.getTableRows("User", type, infor.currentUser)[0].get(0).toString();
-            if(sType.equals("common"))
-                new user(infor).setVisible(true);
-            else if(sType.equals("reviewer"))
-                new Reviewer.Reviewer(infor).setVisible(true);
-            else if(sType.equals("chairman"))
-                new Reviewer.Reviewer(infor).setVisible(true);
-            this.setVisible(false);
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null, "Please check your UserId & Password", "Notice", JOptionPane.OK_OPTION);
-        }
-        
     }//GEN-LAST:event_loginActionPerformed
 
     private void registActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registActionPerformed
-       new regist(infor).setVisible(true); // TODO add your handling code here:
+        new regist(infor).setVisible(true); // TODO add your handling code here:
     }//GEN-LAST:event_registActionPerformed
 
     private void configurationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_configurationActionPerformed
-     new Configuration(infor).setVisible(true);   // TODO add your handling code here:
+        new Configuration(infor).setVisible(true);   // TODO add your handling code here:
     }//GEN-LAST:event_configurationActionPerformed
 
     private void loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseClicked
-      
     }//GEN-LAST:event_loginMouseClicked
 
     private void registMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registMouseClicked
-    // TODO add your handling code here:
-    
+        // TODO add your handling code here:
     }//GEN-LAST:event_registMouseClicked
 
     private void configurationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_configurationMouseClicked
-            // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_configurationMouseClicked
 
     private void useridtextKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_useridtextKeyTyped
-       if ((evt.getKeyChar() >= KeyEvent.VK_0 && evt.getKeyChar() <= evt.VK_9) 
-      || evt.getKeyChar() == evt.VK_ENTER || evt.getKeyChar() == evt.VK_TAB
-      || evt.getKeyChar() == evt.VK_BACK_SPACE || evt.getKeyChar() == evt.VK_DELETE 
-      || evt.getKeyChar() == evt.VK_LEFT || evt.getKeyChar() == evt.VK_RIGHT 
-      || evt.getKeyChar() == evt.VK_ESCAPE) 
-      return;   
-     evt.consume();
+        if ((evt.getKeyChar() >= KeyEvent.VK_0 && evt.getKeyChar() <= evt.VK_9)
+                || evt.getKeyChar() == evt.VK_ENTER || evt.getKeyChar() == evt.VK_TAB
+                || evt.getKeyChar() == evt.VK_BACK_SPACE || evt.getKeyChar() == evt.VK_DELETE
+                || evt.getKeyChar() == evt.VK_LEFT || evt.getKeyChar() == evt.VK_RIGHT
+                || evt.getKeyChar() == evt.VK_ESCAPE) {
+            return;
+        }
+        evt.consume();
 
         //if(evt.getKeyChar()<='0'||evt.getKeyChar()>='9') 
         //{ evt.setKeyCode(0);System.out.print("bbbbbbbbbbb"); }// TODO add your handling code here:
-        
+
     }//GEN-LAST:event_useridtextKeyTyped
 
     private void useridtextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_useridtextKeyPressed
-     //if(evt.getKeyChar()<='0'||evt.getKeyChar()>='9') 
-       // { System.out.print(evt.getKeyCode()); }   // TODO add your handling code here:
+        //if(evt.getKeyChar()<='0'||evt.getKeyChar()>='9') 
+        // { System.out.print(evt.getKeyCode()); }   // TODO add your handling code here:
     }//GEN-LAST:event_useridtextKeyPressed
 
     private void useridtextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useridtextActionPerformed
@@ -290,7 +284,7 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               // new Login().setVisible(true);
+                // new Login().setVisible(true);
             }
         });
     }
