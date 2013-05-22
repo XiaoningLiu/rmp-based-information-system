@@ -22,6 +22,12 @@ public class Modify extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         currentPaperId = paperId;
         
+        jTextField11.setEditable(false); 
+        jTextField12.setEditable(false); 
+        jTextField14.setEditable(false); 
+        jTextField15.setEditable(false); 
+        
+        
         Vector<String> columns = new Vector();
         columns.add("title");
         columns.add("author");
