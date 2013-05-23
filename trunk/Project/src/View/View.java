@@ -133,6 +133,7 @@ public class View extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jLabel4.setText("Title");
 
+        jTextField1.setEditable(false);
         jTextField1.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,6 +141,7 @@ public class View extends javax.swing.JFrame {
             }
         });
 
+        jTextField3.setEditable(false);
         jTextField3.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,6 +149,7 @@ public class View extends javax.swing.JFrame {
             }
         });
 
+        jTextField6.setEditable(false);
         jTextField6.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,6 +160,7 @@ public class View extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jLabel7.setText("Source");
 
+        jTextField5.setEditable(false);
         jTextField5.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,6 +168,7 @@ public class View extends javax.swing.JFrame {
             }
         });
 
+        jTextField4.setEditable(false);
         jTextField4.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,11 +177,12 @@ public class View extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
-        jLabel5.setText("UploadDate");
+        jLabel5.setText("State");
 
         jLabel6.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
-        jLabel6.setText("State");
+        jLabel6.setText("UploadDate");
 
+        jTextField8.setEditable(false);
         jTextField8.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jTextField8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,6 +196,7 @@ public class View extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jLabel9.setText("Keyword");
 
+        jTextField9.setEditable(false);
         jTextField9.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jTextField9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -264,6 +271,7 @@ public class View extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("History Record"));
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
@@ -275,6 +283,7 @@ public class View extends javax.swing.JFrame {
             }
         });
 
+        jTextArea2.setEditable(false);
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);

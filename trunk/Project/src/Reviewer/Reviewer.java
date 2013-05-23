@@ -63,6 +63,20 @@ public class Reviewer extends javax.swing.JFrame {
             updateTable2ForChairman();
         }
     }
+    
+    public void updateTable2()
+    {
+        Vector type=new Vector();
+        type.add("type");
+        String sType=infor.jx.getTableRows("User", type, infor.currentUser)[0].get(0).toString();
+        if(sType.equals("reviewer")){
+             updateTable2ForReviewer();
+        }
+        else if(sType.equals("chairman")){
+            updateTable2ForChairman();
+        }
+    }
+    
     private void updateTable2ForReviewer()
     {
         model2.getDataVector().removeAllElements();
@@ -693,7 +707,7 @@ new Configuration(infor).setVisible(true);        // TODO add your handling code
     }//GEN-LAST:event_SearchActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-this.setVisible(false);
+        this.setVisible(false);
         new Login(infor).setVisible(true);         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
@@ -731,10 +745,10 @@ this.setVisible(false);
         type.add("type");
         String sType=infor.jx.getTableRows("User", type, infor.currentUser)[0].get(0).toString();
         if(sType.equals("reviewer")){
-             new Review(selectedPaperId, infor.currentUser).setVisible(true);
+             new Review(selectedPaperId, infor.currentUser, this).setVisible(true);
         }
         else if(sType.equals("chairman")){
-            new Review_chairman(selectedPaperId, infor.currentUser).setVisible(true);
+            new Review_chairman(selectedPaperId, infor.currentUser, this).setVisible(true);
         }
     }//GEN-LAST:event_jTable2MouseClicked
 
