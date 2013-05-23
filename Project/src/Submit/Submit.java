@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Vector;
 import java.util.Random;
+import user.user;
 /**
  *
  * @author dianer
@@ -17,8 +18,10 @@ public class Submit extends javax.swing.JFrame {
      * Creates new form Submit
      */
     private PaperManagement.Infor infor;
-    public Submit(PaperManagement.Infor tmp) {
+    private user userUI;
+    public Submit(PaperManagement.Infor tmp, user uUI) {
         infor=tmp;
+        userUI = uUI;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -299,7 +302,7 @@ this.setVisible(false);         // TODO add your handling code here:
         columns3.add("postDate");
         Vector values3=new Vector();
         values3.add(pv);
-        values3.add("the first version");
+        values3.add(jTextField5.getText());
         values3.add(jTextArea1.getText());
         Date dt=new Date();
         SimpleDateFormat matter1=new SimpleDateFormat("yyyyMMdd");    
@@ -337,7 +340,7 @@ this.setVisible(false);         // TODO add your handling code here:
         values4.add("1");
         infor.jx.postTableRow("review", reviewer+"@"+values.get(0).toString(), columns4, values4);
 
-
+        userUI.updateTable2();
         this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_SubmitActionPerformed
 

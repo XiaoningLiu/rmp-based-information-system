@@ -15,12 +15,14 @@ import javax.swing.DefaultComboBoxModel;
 public class Review_chairman extends javax.swing.JFrame {
     private String currentPaperId;
     private String currentUserID;
+    private Reviewer.Reviewer reviewerUI;
 
     /**
      * Creates new form Review_chairman
      */
-    public Review_chairman(String paperId,String userID) {
+    public Review_chairman(String paperId,String userID, Reviewer.Reviewer newReviewerUI) {
         initComponents();   
+        reviewerUI = newReviewerUI;
         setLocationRelativeTo(null);
         currentPaperId = paperId;
         currentUserID=userID;
@@ -53,6 +55,14 @@ public class Review_chairman extends javax.swing.JFrame {
         jTextField8.setText(paperResult[5].get(0).toString());
         jTextField5.setText(paperVersionResult[0].get(paperVersionCounter-1).toString());
         jTextField10.setText(paperVersionResult[1].get(paperVersionCounter-1).toString()); 
+        
+         // get my comment
+        columns.clear();
+        columns.add("advice");
+        Vector[] adviceResult = java_xml.java_xml.getTableRows("review", columns, currentUserID+"@"+currentPaperId);
+        if (adviceResult[0].size() > 0){
+            jTextArea3.setText(adviceResult[0].get(0).toString());
+        }
         
         // put different History
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>();
@@ -131,6 +141,7 @@ public class Review_chairman extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jLabel4.setText("Title");
 
+        jTextField1.setEditable(false);
         jTextField1.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,8 +150,9 @@ public class Review_chairman extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
-        jLabel5.setText("UploadDate");
+        jLabel5.setText("State");
 
+        jTextField4.setEditable(false);
         jTextField4.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,6 +160,7 @@ public class Review_chairman extends javax.swing.JFrame {
             }
         });
 
+        jTextField5.setEditable(false);
         jTextField5.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,6 +168,7 @@ public class Review_chairman extends javax.swing.JFrame {
             }
         });
 
+        jTextField8.setEditable(false);
         jTextField8.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jTextField8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,8 +180,9 @@ public class Review_chairman extends javax.swing.JFrame {
         jLabel8.setText("Go Through Time");
 
         jLabel6.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
-        jLabel6.setText("State");
+        jLabel6.setText("UploadDate");
 
+        jTextField3.setEditable(false);
         jTextField3.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,6 +199,7 @@ public class Review_chairman extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jLabel9.setText("Keyword");
 
+        jTextField6.setEditable(false);
         jTextField6.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,6 +207,7 @@ public class Review_chairman extends javax.swing.JFrame {
             }
         });
 
+        jTextField9.setEditable(false);
         jTextField9.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jTextField9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,6 +218,7 @@ public class Review_chairman extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jLabel10.setText("Abstract");
 
+        jTextField10.setEditable(false);
         jTextField10.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jTextField10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,7 +247,7 @@ public class Review_chairman extends javax.swing.JFrame {
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+                            .addComponent(jTextField6)
                             .addComponent(jTextField9))))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -241,7 +259,7 @@ public class Review_chairman extends javax.swing.JFrame {
                         .addGap(24, 24, 24)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                    .addComponent(jTextField4)
                     .addComponent(jTextField5)
                     .addComponent(jTextField8)
                     .addComponent(jTextField10))
@@ -279,6 +297,7 @@ public class Review_chairman extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("History Record"));
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
@@ -290,6 +309,7 @@ public class Review_chairman extends javax.swing.JFrame {
             }
         });
 
+        jTextArea2.setEditable(false);
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
@@ -308,7 +328,7 @@ public class Review_chairman extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addComponent(Edition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -320,12 +340,12 @@ public class Review_chairman extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Edition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
                     .addComponent(jScrollPane2)))
         );
@@ -348,7 +368,7 @@ public class Review_chairman extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         Save.setText("Save");
@@ -426,10 +446,10 @@ public class Review_chairman extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -438,7 +458,7 @@ public class Review_chairman extends javax.swing.JFrame {
                     .addComponent(Save, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Refuse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanel1.getAccessibleContext().setAccessibleDescription("");
@@ -463,10 +483,11 @@ public class Review_chairman extends javax.swing.JFrame {
         columnRe.add("reviewCounter");
         columnRe.add("state");
         Vector valueRe=new Vector();
-        valueRe.add("2");
+        valueRe.add("3");
         valueRe.add("passed");
         java_xml.java_xml.putTableRow("Paper", currentPaperId, columnRe, valueRe);
 
+        reviewerUI.updateTable2();
         this.setVisible(false);          // TODO add your handling code here:
     }//GEN-LAST:event_PassActionPerformed
 
@@ -491,10 +512,11 @@ this.setVisible(false);         // TODO add your handling code here:
         columnRe.add("reviewCounter");
         columnRe.add("state");
         Vector valueRe=new Vector();
-        valueRe.add("2");
+        valueRe.add("3");
         valueRe.add("failed");
         java_xml.java_xml.putTableRow("Paper", currentPaperId, columnRe, valueRe);
 
+        reviewerUI.updateTable2();
         this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_RefuseActionPerformed
 
@@ -616,7 +638,7 @@ this.setVisible(false);         // TODO add your handling code here:
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Review_chairman("9","111").setVisible(true);
+                //new Review_chairman("9","111").setVisible(true);
             }
         });
     }

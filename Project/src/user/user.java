@@ -57,7 +57,7 @@ public class user extends javax.swing.JFrame {
         // update table2
         updateTable2();
     }
-    private void updateTable2()
+    public void updateTable2()
     {
         model2.getDataVector().removeAllElements();
 model2.fireTableDataChanged();
@@ -119,6 +119,8 @@ model2.fireTableDataChanged();
         jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jPopupMenu4 = new javax.swing.JPopupMenu();
+        jMenuItem_view2 = new javax.swing.JMenuItem();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -148,7 +150,7 @@ model2.fireTableDataChanged();
         Submit = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
 
-        jMenuItem1.setText("Review");
+        jMenuItem1.setText("View");
         jMenuItem1.setToolTipText("Review the paper");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,6 +191,7 @@ model2.fireTableDataChanged();
         });
         jPopupMenu3.add(jMenuItem_view1);
 
+        jDialog1.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jDialog1.setTitle("Are you sure?");
         jDialog1.setResizable(false);
 
@@ -236,6 +239,14 @@ model2.fireTableDataChanged();
                 .addContainerGap())
         );
 
+        jMenuItem_view2.setText("View");
+        jMenuItem_view2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_view2ActionPerformed(evt);
+            }
+        });
+        jPopupMenu4.add(jMenuItem_view2);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Paper Management System");
 
@@ -243,40 +254,45 @@ model2.fireTableDataChanged();
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Attribution"));
 
-        jLabel4.setFont(new java.awt.Font("宋体", 0, 14));
+        jLabel4.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jLabel4.setText("Title");
 
-        jLabel3.setFont(new java.awt.Font("宋体", 0, 14));
+        jLabel3.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jLabel3.setText("Author");
 
-        jLabel5.setFont(new java.awt.Font("宋体", 0, 14));
+        jLabel5.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jLabel5.setText("Keyword");
 
-        jLabel6.setFont(new java.awt.Font("宋体", 0, 14));
+        jLabel6.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jLabel6.setText("PublishDate");
 
-        jTextField1.setFont(new java.awt.Font("宋体", 0, 14));
+        jTextField1.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                //jTextField1FocusGained(evt);
+            }
+        });
 
-        jTextField3.setFont(new java.awt.Font("宋体", 0, 14));
+        jTextField3.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
             }
         });
 
-        jTextField4.setFont(new java.awt.Font("宋体", 0, 14));
+        jTextField4.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
             }
         });
 
-        jTextField5.setFont(new java.awt.Font("宋体", 0, 14));
+        jTextField5.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
@@ -302,7 +318,7 @@ model2.fireTableDataChanged();
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE))
+                    .addComponent(jTextField3))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
@@ -310,7 +326,7 @@ model2.fireTableDataChanged();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE))
+                    .addComponent(jTextField5))
                 .addGap(54, 54, 54))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(710, Short.MAX_VALUE)
@@ -338,109 +354,10 @@ model2.fireTableDataChanged();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
-                "ID", "Title", "Author", "Keyword", "ModificationDate", "PublishDate"
+
             }
         ));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -455,14 +372,14 @@ model2.fireTableDataChanged();
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 795, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Search Paper", jPanel2);
@@ -597,14 +514,17 @@ model2.fireTableDataChanged();
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("My Paper", jPanel1);
 
         jLabel1.setText("Normal User");
+        jLabel1.setMaximumSize(new java.awt.Dimension(166, 15));
 
         jLabel2.setText("Welcome");
+        jLabel2.setMaximumSize(new java.awt.Dimension(100, 15));
+        jLabel2.setMinimumSize(new java.awt.Dimension(100, 15));
 
         jMenuBar1.setFocusTraversalPolicyProvider(true);
         jMenuBar1.setPreferredSize(new java.awt.Dimension(127, 29));
@@ -679,16 +599,16 @@ model2.fireTableDataChanged();
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 650, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jTabbedPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(236, 236, 236)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -794,7 +714,7 @@ model2.fireTableDataChanged();
     }//GEN-LAST:event_ExitActionPerformed
 
     private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
-      new Submit(infor).setVisible(true);   // TODO add your handling code here:
+      new Submit(infor, this).setVisible(true);   // TODO add your handling code here:
     }//GEN-LAST:event_SubmitActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -829,6 +749,18 @@ model2.fireTableDataChanged();
         if( evt.getButton() == 3 && selectedPaperState.equals("reviewing"))
         {
             jPopupMenu3.show(jTable2, evt.getX(), evt.getY());
+        }
+        if( evt.getButton() == 3 && selectedPaperState.equals("secondReviewing"))
+        {
+            jPopupMenu3.show(jTable2, evt.getX(), evt.getY());
+        }
+        if( evt.getButton() == 3 && selectedPaperState.equals("finalReviewing"))
+        {
+            jPopupMenu4.show(jTable2, evt.getX(), evt.getY());
+        }
+        if( evt.getButton() == 3 && selectedPaperState.equals("deleted"))
+        {
+            jPopupMenu4.show(jTable2, evt.getX(), evt.getY());
         }
     }//GEN-LAST:event_jTable2MouseClicked
 
@@ -906,6 +838,15 @@ model2.fireTableDataChanged();
         viewWin.setVisible(true);
     }//GEN-LAST:event_jMenuItem_view1ActionPerformed
 
+    private void jMenuItem_view2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_view2ActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = jTable2.getSelectedRow();
+        String selectedPaperId = jTable2.getValueAt(selectedRow, 0).toString();
+        
+        View viewWin =  new View(selectedPaperId);
+        viewWin.setVisible(true);
+    }//GEN-LAST:event_jMenuItem_view2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -965,12 +906,14 @@ model2.fireTableDataChanged();
     private javax.swing.JMenuItem jMenuItem_modify;
     private javax.swing.JMenuItem jMenuItem_view;
     private javax.swing.JMenuItem jMenuItem_view1;
+    private javax.swing.JMenuItem jMenuItem_view2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JPopupMenu jPopupMenu3;
+    private javax.swing.JPopupMenu jPopupMenu4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPopupMenu.Separator jSeparator2;

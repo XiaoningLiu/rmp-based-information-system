@@ -17,12 +17,14 @@ import java.text.SimpleDateFormat;
 public class Review extends javax.swing.JFrame {
     private String currentPaperId;
     private String currentUserID;
+    private Reviewer.Reviewer reviewerUI;
 
     /**
      * Creates new form Review
      */
-    public Review(String paperId,String userID) {
+    public Review(String paperId,String userID, Reviewer.Reviewer newReviewerUI) {
         initComponents();
+        reviewerUI = newReviewerUI;
         setLocationRelativeTo(null);
         jTextField1.setEditable(false); 
         jTextField3.setEditable(false); 
@@ -65,6 +67,14 @@ public class Review extends javax.swing.JFrame {
         jTextField8.setText(paperResult[5].get(0).toString());
         jTextField5.setText(paperVersionResult[0].get(paperVersionCounter-1).toString());
         jTextField10.setText(paperVersionResult[1].get(paperVersionCounter-1).toString()); 
+        
+        // get my comment
+        columns.clear();
+        columns.add("advice");
+        Vector[] adviceResult = java_xml.java_xml.getTableRows("review", columns, currentUserID+"@"+currentPaperId);
+        if (adviceResult[0].size() > 0){
+            jTextArea3.setText(adviceResult[0].get(0).toString());
+        }
         
         // put different History
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<String>();
@@ -138,6 +148,7 @@ public class Review extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("History Record"));
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
@@ -149,6 +160,7 @@ public class Review extends javax.swing.JFrame {
             }
         });
 
+        jTextArea2.setEditable(false);
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
@@ -157,11 +169,6 @@ public class Review extends javax.swing.JFrame {
         jComboBox1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComboBox1ItemStateChanged(evt);
-            }
-        });
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
             }
         });
 
@@ -190,13 +197,14 @@ public class Review extends javax.swing.JFrame {
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addContainerGap())
         );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Attribution"));
 
+        jTextField1.setEditable(false);
         jTextField1.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -216,6 +224,7 @@ public class Review extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jLabel9.setText("Keyword");
 
+        jTextField9.setEditable(false);
         jTextField9.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jTextField9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,6 +232,7 @@ public class Review extends javax.swing.JFrame {
             }
         });
 
+        jTextField6.setEditable(false);
         jTextField6.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,6 +240,7 @@ public class Review extends javax.swing.JFrame {
             }
         });
 
+        jTextField3.setEditable(false);
         jTextField3.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -238,7 +249,7 @@ public class Review extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
-        jLabel5.setText("UploadDate");
+        jLabel5.setText("State");
 
         jTextField4.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
@@ -247,6 +258,7 @@ public class Review extends javax.swing.JFrame {
             }
         });
 
+        jTextField5.setEditable(false);
         jTextField5.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -254,6 +266,7 @@ public class Review extends javax.swing.JFrame {
             }
         });
 
+        jTextField8.setEditable(false);
         jTextField8.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jTextField8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -261,6 +274,7 @@ public class Review extends javax.swing.JFrame {
             }
         });
 
+        jTextField10.setEditable(false);
         jTextField10.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
         jTextField10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -275,7 +289,7 @@ public class Review extends javax.swing.JFrame {
         jLabel8.setText("Go Through Time");
 
         jLabel6.setFont(new java.awt.Font("宋体", 0, 14)); // NOI18N
-        jLabel6.setText("State");
+        jLabel6.setText("UploadDate");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -434,7 +448,7 @@ public class Review extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 327, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -462,73 +476,91 @@ this.setVisible(false);         // TODO add your handling code here:
         if(counter.equals("1"))
         {
              //about review
-        Vector columnrr=new Vector();
-        columnrr.add("primarykey");
-        columnrr.add("type");
-        Vector[] ur1=java_xml.java_xml.getTableRows("User", columnrr, "*");
-        Vector uri1=new Vector();//to memorize the reviewer id
-        for(int i=0;i<ur1[0].size();i++)
-        {
-            if(ur1[1].get(i).toString().equals("reviewer"))
+            Vector columnrr=new Vector();
+            columnrr.add("primarykey");
+            columnrr.add("type");
+            Vector[] ur1=java_xml.java_xml.getTableRows("User", columnrr, "*");
+            Vector uri1=new Vector();//to memorize the reviewer id
+            for(int i=0;i<ur1[0].size();i++)
             {
-                uri1.add(ur1[0].get(i).toString());
+                if(ur1[1].get(i).toString().equals("reviewer"))
+                {
+                    uri1.add(ur1[0].get(i).toString());
+                }
             }
-        }
-        Random random = new Random();
-        String reviewer=currentUserID;
-        while(reviewer.equals(currentUserID))
-        {
-            reviewer=uri1.get(Math.abs(random.nextInt())%(uri1.size())).toString();
-        }
+            Random random = new Random();
+            String reviewer=currentUserID;
+            while(reviewer.equals(currentUserID))
+            {
+                reviewer=uri1.get(Math.abs(random.nextInt())%(uri1.size())).toString();
+            }
 
 
-        Vector columns4=new Vector();
-        columns4.add("domainKey");
-        columns4.add("rangeKey");
-        columns4.add("isFinish");
-        columns4.add("getTime");
-        columns4.add("reviewCounter");
-        Vector values4=new Vector();
-        values4.add(reviewer);
-        values4.add(currentPaperId);
-        values4.add("no");
-        values4.add(matter1.format(dt));
-        values4.add("2");
-        java_xml.java_xml.postTableRow("review", reviewer+"@"+currentPaperId, columns4, values4);
+            Vector columns4=new Vector();
+            columns4.add("domainKey");
+            columns4.add("rangeKey");
+            columns4.add("isFinish");
+            columns4.add("getTime");
+            columns4.add("reviewCounter");
+            Vector values4=new Vector();
+            values4.add(reviewer);
+            values4.add(currentPaperId);
+            values4.add("no");
+            values4.add(matter1.format(dt));
+            values4.add("2");
+            java_xml.java_xml.postTableRow("review", reviewer+"@"+currentPaperId, columns4, values4);
+            
+             //change review counter&state in paper
+            Vector columnRe=new Vector();
+            columnRe.add("reviewCounter");
+            columnRe.add("state");
+            Vector valueRe=new Vector();
+            valueRe.add("1");
+            valueRe.add("secondReviewing");
+            java_xml.java_xml.putTableRow("Paper", currentPaperId, columnRe, valueRe);
         }
 
         //about judge
         //first decide wich chairman to send
         else{
-        Vector columnr=new Vector();
-        columnr.add("primarykey");
-        columnr.add("type");
-        Vector[] ur=java_xml.java_xml.getTableRows("User", columnr, "*");
-        Vector uri=new Vector();//to memorize the reviewer id
-        for(int i=0;i<ur[0].size();i++)
-        {
-            if(ur[1].get(i).toString().equals("chairman"))
+            Vector columnr=new Vector();
+            columnr.add("primarykey");
+            columnr.add("type");
+            Vector[] ur=java_xml.java_xml.getTableRows("User", columnr, "*");
+            Vector uri=new Vector();//to memorize the reviewer id
+            for(int i=0;i<ur[0].size();i++)
             {
-                uri.add(ur[0].get(i).toString());
+                if(ur[1].get(i).toString().equals("chairman"))
+                {
+                    uri.add(ur[0].get(i).toString());
+                }
             }
-        }
-        Random random = new Random();
-        String chairman=uri.get(Math.abs(random.nextInt())%(uri.size())).toString();
+            Random random = new Random();
+            String chairman=uri.get(Math.abs(random.nextInt())%(uri.size())).toString();
 
-        //add judge
-        Vector columnc=new Vector();
-        columnc.add("domainKey");
-        columnc.add("rangeKey");
-        columnc.add("getTime");
-        columnc.add("isFinish");
-        columnc.add("reviewCounter");
-        Vector valuec=new Vector();
-        valuec.add(chairman);
-        valuec.add(currentPaperId);
-        valuec.add(matter1.format(dt));
-        valuec.add("no");
-        valuec.add("3");
-        java_xml.java_xml.postTableRow("judge", chairman+"@"+currentPaperId, columnc, valuec);
+            //add judge
+            Vector columnc=new Vector();
+            columnc.add("domainKey");
+            columnc.add("rangeKey");
+            columnc.add("getTime");
+            columnc.add("isFinish");
+            columnc.add("reviewCounter");
+            Vector valuec=new Vector();
+            valuec.add(chairman);
+            valuec.add(currentPaperId);
+            valuec.add(matter1.format(dt));
+            valuec.add("no");
+            valuec.add("3");
+            java_xml.java_xml.postTableRow("judge", chairman+"@"+currentPaperId, columnc, valuec);
+            
+             //change review counter&state in paper
+            Vector columnRe=new Vector();
+            columnRe.add("reviewCounter");
+            columnRe.add("state");
+            Vector valueRe=new Vector();
+            valueRe.add("2");
+            valueRe.add("finalReviewing");
+            java_xml.java_xml.putTableRow("Paper", currentPaperId, columnRe, valueRe);
         }
         
         //add advice
@@ -538,17 +570,9 @@ this.setVisible(false);         // TODO add your handling code here:
         Vector value=new Vector();
         value.add(jTextArea3.getText());
         value.add("yes");
-        java_xml.java_xml.putTableRow("review", currentUserID+"@"+currentPaperId, column, value);
-
-        //change review counter&state in paper
-        Vector columnRe=new Vector();
-        columnRe.add("reviewCounter");
-        columnRe.add("state");
-        Vector valueRe=new Vector();
-        valueRe.add("1");
-        valueRe.add("finalreving");
-        java_xml.java_xml.putTableRow("Paper", currentPaperId, columnRe, valueRe);
+        java_xml.java_xml.putTableRow("review", currentUserID+"@"+currentPaperId, column, value);    
         
+        reviewerUI.updateTable2();
         this.setVisible(false);         // TODO add your handling code here:
     }//GEN-LAST:event_SubmitActionPerformed
 
@@ -666,7 +690,7 @@ this.setVisible(false);         // TODO add your handling code here:
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Review("9","89757").setVisible(true);
+                //new Review("9","89757").setVisible(true);
             }
         });
     }
